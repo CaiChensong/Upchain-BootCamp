@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-hex = "0.4.3"
+sha2 = "0.10"
+hex = "0.4"
 rand = "0.8"
 rsa = { version = "0.9.8", features = ["getrandom"] }
 

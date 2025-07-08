@@ -6,11 +6,12 @@
 用私钥对符合 POW 4 个 0 开头的哈希值的 “昵称 + nonce” 进行私钥签名，
 用公钥验证
  */
-use std::hash::{DefaultHasher, Hash, Hasher};
-use std::time::{SystemTime, UNIX_EPOCH};
+use std::fmt::Debug;
 use rsa::{Pkcs1v15Encrypt, RsaPrivateKey, RsaPublicKey};
+use sha2::{Sha256, Digest};
+use hex;
 
-#[derive(Hash)]
+#[derive(Debug, Clone)]
 struct Person {
     name: String,
     nonce: u64,
@@ -44,32 +45,20 @@ fn main() {
 
 
 fn get_hash(mut person: Person, zero_number: usize) -> String {
-    assert!(zero_number <= 16);
+    assert!(zero_number <= 64);
 
-    let mut hash = format!("{:X}", calculate_hash(&person));
-    while hash.len() > 16 - zero_number {
+    let mut hash = calculate_hash(&person);
+    let prefix = "0".repeat(zero_number);
+    while !hash.starts_with(&prefix) {
         person.nonce = rand::random::<u64>();
-        hash = format!("{:X}", calculate_hash(&person));
-    }
-
-    format_hash(hash)
-}
-
-fn calculate_hash<T: Hash>(t: &T) -> u64 {
-    let mut s = DefaultHasher::new();
-    t.hash(&mut s);
-    s.finish()
-}
-
-fn format_hash(mut hash: String) -> String {
-    for _ in 0..16 - hash.len() {
-        hash = format!("0{}", hash);
+        hash = calculate_hash(&person);
     }
     hash
 }
 
-fn get_timestamp() -> u128 {
-    SystemTime::now().duration_since(UNIX_EPOCH)
-        .unwrap()
-        .as_millis()
+fn calculate_hash<T: Debug>(t: &T) -> String {
+    let mut hasher = Sha256::new();
+    hasher.update(format!("{:?}", t));
+    let result = hasher.finalize();
+    hex::encode(result)
 }

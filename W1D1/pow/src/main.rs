@@ -6,12 +6,12 @@
 
 再次运算直到满足 5 个 0 开头的哈希值，打印出花费的时间、Hash 的内容及Hash值。
  */
-
-
+use std::fmt::{Debug, Display};
 use std::time::{SystemTime, UNIX_EPOCH};
-use std::hash::{DefaultHasher, Hash, Hasher};
+use sha2::{Sha256, Digest};
+use hex;
 
-#[derive(Hash)]
+#[derive(Debug)]
 struct Person {
     name: String,
     nonce: u64,
@@ -37,48 +37,33 @@ fn main() {
         },
         5
     );
-    println!("========================================");
-
-    // 满足 6 个 0 开头的哈希值
-    test_pow(
-        Person {
-            name: "ccs".to_string(),
-            nonce: rand::random::<u64>(),
-        },
-        6
-    );
 }
 
 fn test_pow(mut person: Person, zero_number: usize) {
-    assert!(zero_number <= 16);
+    assert!(zero_number <= 64);
 
     let start_time = get_timestamp();
     println!("start time: {}", start_time);
 
-    let mut hash = format!("{:X}", calculate_hash(&person));
-    while hash.len() > 16 - zero_number {
+    let mut hash = calculate_hash(&person);
+    let prefix = "0".repeat(zero_number);
+    while !hash.starts_with(&prefix) {
         person.nonce = rand::random::<u64>();
-        hash = format!("{:X}", calculate_hash(&person));
+        hash = calculate_hash(&person);
     }
 
     let end_time = get_timestamp();
     println!("end time: {}", end_time);
     println!("used time: {} ms", end_time - start_time);
 
-    println!("hash start {} ‘0’: {}", zero_number, format_hash(hash));
+    println!("hash start {} ‘0’: {}", zero_number, hash);
 }
 
-fn calculate_hash<T: Hash>(t: &T) -> u64 {
-    let mut s = DefaultHasher::new();
-    t.hash(&mut s);
-    s.finish()
-}
-
-fn format_hash(mut hash: String) -> String {
-    for _ in 0..16 - hash.len() {
-        hash = format!("0{}", hash);
-    }
-    hash
+fn calculate_hash<T: Debug>(t: &T) -> String {
+    let mut hasher = Sha256::new();
+    hasher.update(format!("{:?}", t));
+    let result = hasher.finalize();
+    hex::encode(result)
 }
 
 fn get_timestamp() -> u128 {
