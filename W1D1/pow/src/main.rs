@@ -50,7 +50,7 @@ fn main() {
 }
 
 fn test_pow(mut person: Person, zero_number: usize) {
-    assert!(zero_number < 16);
+    assert!(zero_number <= 16);
 
     let start_time = get_timestamp();
     println!("start time: {}", start_time);
