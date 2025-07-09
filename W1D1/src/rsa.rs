@@ -8,8 +8,8 @@
  */
 use std::fmt::Debug;
 use rsa::{Pkcs1v15Encrypt, RsaPrivateKey, RsaPublicKey};
-use sha2::{Sha256, Digest};
 use hex;
+use crate::calculate_hash;
 
 #[derive(Debug, Clone)]
 struct Person {
@@ -17,7 +17,8 @@ struct Person {
     nonce: u64,
 }
 
-fn main() {
+#[test]
+fn test() {
     let mut rng = rand::thread_rng();
     let bits = 2048;
     let private_key = RsaPrivateKey::new(&mut rng, bits).expect("failed to generate a key");
@@ -56,9 +57,3 @@ fn get_hash(mut person: Person, zero_number: usize) -> String {
     hash
 }
 
-fn calculate_hash<T: Debug>(t: &T) -> String {
-    let mut hasher = Sha256::new();
-    hasher.update(format!("{:?}", t));
-    let result = hasher.finalize();
-    hex::encode(result)
-}

@@ -6,10 +6,9 @@
 
 再次运算直到满足 5 个 0 开头的哈希值，打印出花费的时间、Hash 的内容及Hash值。
  */
-use std::fmt::{Debug, Display};
+use std::fmt::{Debug};
 use std::time::{SystemTime, UNIX_EPOCH};
-use sha2::{Sha256, Digest};
-use hex;
+use crate::calculate_hash;
 
 #[derive(Debug)]
 struct Person {
@@ -17,7 +16,8 @@ struct Person {
     nonce: u64,
 }
 
-fn main() {
+#[test]
+fn test() {
 
     // 满足 4 个 0 开头的哈希值
     test_pow(
@@ -57,13 +57,6 @@ fn test_pow(mut person: Person, zero_number: usize) {
     println!("used time: {} ms", end_time - start_time);
 
     println!("hash start {} ‘0’: {}", zero_number, hash);
-}
-
-fn calculate_hash<T: Debug>(t: &T) -> String {
-    let mut hasher = Sha256::new();
-    hasher.update(format!("{:?}", t));
-    let result = hasher.finalize();
-    hex::encode(result)
 }
 
 fn get_timestamp() -> u128 {

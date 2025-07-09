@@ -1,4 +1,5 @@
-题目#1
+## 题目#1
+
 用自己熟悉的语言模拟实现最小的区块链， 包含两个功能：
 
 POW 证明出块，难度为 4 个 0 开头，
@@ -19,7 +20,7 @@ block = {
 ```
 
 运行说明：
-直接运行main方法，会创建一条新的区块链，并为其产生两个新的块，以下为控制台打印结果：
+运行simulation.rs中的test_simulation方法，会创建一条新的区块链，并为其产生两个新的块，以下为控制台打印结果：
 ```
 first block: Block { index: 1, timestamp: 1751981532, transactions: [], proof: 111, previous_hash: "abc" }
 second block: Block { index: 2, timestamp: 1751981532, transactions: [Transaction { sender: "aaa", recipient: "bbb", amount: 3 }], proof: 36650, previous_hash: "f19cb77561f4876e2270900380c4fcfc1afa6e43d20f4196f93564c531ea978c" }

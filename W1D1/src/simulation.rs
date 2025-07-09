@@ -76,8 +76,8 @@ impl Blockchain {
     }
 }
 
-
-fn main() {
+#[test]
+fn test_simulation() {
     let mut blockchain = Blockchain::new();
     println!("first block: {:?}", blockchain.last_block());
 
