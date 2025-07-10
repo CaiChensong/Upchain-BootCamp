@@ -34,10 +34,10 @@ contract Bank {
         if (!exists) {
             allUsers.push(msg.sender);
         }
-        updateTop3(msg.sender);
+        updateTop3();
     }
 
-    function updateTop3(address /*addr*/) private {
+    function updateTop3() private {
         address[3] memory newTop3;
         for (uint i = 0; i < allUsers.length; i++) {
             address user = allUsers[i];
@@ -63,7 +63,7 @@ contract Bank {
         require(address(this).balance >= amount, "contract balance not enough");
         accounts[msg.sender] -= amount;
         payable(msg.sender).transfer(amount);
-        updateTop3(msg.sender);
+        updateTop3();
     }
 
     function addAdmin(address addr) public {
