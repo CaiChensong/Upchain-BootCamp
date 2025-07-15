@@ -17,7 +17,8 @@ import {TokenBank} from "W2D1/TokenBank.sol";
 interface Receiver {
     function tokensReceived(
         address sender,
-        uint256 value
+        uint256 value,
+        bytes calldata data
     ) external returns (bool);
 }
 
@@ -27,7 +28,7 @@ contract ERC20Extend is BaseERC20 {
         transfer(to, amount);
 
         if (to.code.length > 0) {
-            bool rv = Receiver(to).tokensReceived(msg.sender, amount);
+            bool rv = Receiver(to).tokensReceived(msg.sender, amount, "");
             require(rv, "No tokensReceived");
         }
 
@@ -41,7 +42,8 @@ contract TokenBankV2 is TokenBank, Receiver {
 
     function tokensReceived(
         address sender,
-        uint256 value
+        uint256 value,
+        bytes calldata data
     ) external returns (bool) {
         balances[sender] += value;
         return true;
