@@ -52,7 +52,7 @@ contract Caller {
     function callGetData(address callee) public view returns (uint256 data) {
         // call by staticcall
         (bool success, bytes memory payload) = callee.staticcall(abi.encodeWithSignature("getData()"));
-        require(success, "call function \"getData()\" failed");
+        require(success, "staticcall function faile");
 
         return abi.decode(payload, (uint256));
     }
@@ -196,7 +196,7 @@ contract Caller {
     function delegateSetValue(address callee, uint256 _newValue) public {
         // delegatecall setValue()
         (bool success, ) = callee.delegatecall(abi.encodeWithSignature("setValue(uint256)", _newValue));
-        require(success);
+        require(success, "delegate call failed");
     }
 }
 ```

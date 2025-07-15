@@ -16,22 +16,22 @@ import "W2D1/ERC20.sol";
 
 contract TokenBank {
 
-    BaseERC20 public token;
+    address public token;
     mapping(address => uint256) public balances;
 
     constructor(address _token) {
-        token = BaseERC20(_token);
+        token = _token;
     }
 
     function deposit(uint256 value) public payable {
-        require(token.transferFrom(msg.sender, address(this), value), "Transfer failed");
+        require(BaseERC20(token).transferFrom(msg.sender, address(this), value), "Transfer failed");
         balances[msg.sender] += value;
     }
 
-    function withdraw(uint256 value) public{
+    function withdraw(uint256 value) public {
         require (value <= balances[msg.sender], "Token balance is not enough");
 
-        require(token.transfer(msg.sender, value), "Transfer failed");
+        require(BaseERC20(token).transfer(msg.sender, value), "Transfer failed");
         balances[msg.sender] -= value;
     }
 }
