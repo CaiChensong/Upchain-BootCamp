@@ -45,10 +45,12 @@ contract NFTMarket is Receiver {
     }
 
     function tokensReceived(
-        address sender,
-        uint256 value,
+        address sender, 
+        uint256 value, 
         bytes calldata data
     ) external returns (bool) {
+        require(_token == msg.sender, "not autherized address");
+
         uint256 tokenId = abi.decode(data, (uint256));
         require(value >= prices[tokenId], "paid token not enough");
         IERC721(_nftToken).safeTransferFrom(address(this), sender, tokenId);

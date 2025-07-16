@@ -45,12 +45,8 @@ contract TokenBankV2 is TokenBank, Receiver {
         uint256 value,
         bytes calldata data
     ) external returns (bool) {
+        require(token == msg.sender, "not autherized address");
         balances[sender] += value;
         return true;
     }
 }
-
-
-
-
-

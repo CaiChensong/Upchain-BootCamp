@@ -25,9 +25,3 @@ contract NFTAerialCCC is ERC721URIStorage, Ownable {
     }
 
 }
-
-
-
-
-
-

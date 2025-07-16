@@ -141,7 +141,6 @@ contract BaseERC721 {
      * @dev See {IERC721-ownerOf}.
      */
     function ownerOf(uint256 tokenId) public view returns (address) {
-        require(_exists(tokenId), "ERC721: nonexistent token");
         return _owners[tokenId];
     }
 
@@ -292,25 +291,10 @@ contract BaseERC721 {
             "ERC721: operator query for nonexistent token"
         );
 
-        return _tokenApprovals[tokenId] == spender;
+        return _tokenApprovals[tokenId] == spender 
+                || _operatorApprovals[ownerOf(tokenId)][spender] 
+                || spender == ownerOf(tokenId);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /**
      * @dev Transfers `tokenId` from `from` to `to`.
@@ -331,7 +315,7 @@ contract BaseERC721 {
 
         require(to != address(0), "ERC721: transfer to the zero address");
 
-        _approve(to, tokenId);
+        _approve(address(0), tokenId);
 
         _owners[tokenId] == to;
         _balances[from] --;
