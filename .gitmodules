@@ -1,0 +1,6 @@
+[submodule "W2D4/mytoken/lib/forge-std"]
+	path = W2D4/mytoken/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "W2D4/mytoken/lib/openzeppelin-contracts"]
+	path = W2D4/mytoken/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
