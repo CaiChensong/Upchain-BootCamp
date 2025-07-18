@@ -14,7 +14,7 @@ pragma solidity ^0.8.0;
 */
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
-import "W2D2/ERC20Hook.sol";
+import "../W2D2/ERC20Hook.sol";
 
 contract NFTMarket is Receiver {
 

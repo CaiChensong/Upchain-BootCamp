@@ -11,8 +11,8 @@ pragma solidity ^0.8.0;
 （备注：TokenBankV2 需要实现 tokensReceived 来实现存款记录工作）
 */
 
-import {BaseERC20} from "W2D1/ERC20.sol";
-import {TokenBank} from "W2D1/TokenBank.sol";
+import {BaseERC20} from "../W2D1/ERC20.sol";
+import {TokenBank} from "../W2D1/TokenBank.sol";
 
 interface Receiver {
     function tokensReceived(

@@ -12,7 +12,7 @@ TokenBank 有两个方法：
 - withdraw(): 用户可以提取自己的之前存入的 token。
 */
 
-import "W2D1/ERC20.sol";
+import "./ERC20.sol";
 
 contract TokenBank {
 

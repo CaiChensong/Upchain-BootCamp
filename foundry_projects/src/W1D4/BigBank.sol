@@ -1,4 +1,5 @@
 //SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 /*
 题目#1
@@ -12,8 +13,6 @@
 
 BigBank 和 Admin 合约 部署后，把 BigBank 的管理员转移给 Admin 合约地址，模拟几个用户的存款，然后 Admin 合约的Owner地址调用 adminWithdraw(IBank bank) 把 BigBank 的资金转移到 Admin 地址。
 */
-
-pragma solidity ^0.8.0;
 
 interface IBank {
     function withdraw(uint amount) external;

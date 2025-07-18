@@ -1,4 +1,5 @@
 //SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 /*
 创建和部署第一个智能合约
@@ -12,8 +13,6 @@ Counter 合约具有：
 
 请在回答框内提交调用 add(x) 的交易 Hash 的区块链浏览器的 URL。
 */
-
-pragma solidity ^0.8.0;
 contract Counter{
     uint256 public counter;
     

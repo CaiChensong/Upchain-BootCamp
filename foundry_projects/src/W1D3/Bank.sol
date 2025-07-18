@@ -1,4 +1,5 @@
 //SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 /*
 题目#1
@@ -9,8 +10,6 @@
     - 编写 withdraw() 方法，仅管理员可以通过该方法提取资金。
     - 用数组记录存款金额的前 3 名用户
 */
-
-pragma solidity ^0.8.0;
 contract Bank {
 
     address[] public allAdmins;
