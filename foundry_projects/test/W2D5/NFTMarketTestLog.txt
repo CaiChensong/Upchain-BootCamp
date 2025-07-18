@@ -1,0 +1,48 @@
+[⠊] Compiling...
+[⠑] Compiling 2 files with Solc 0.8.30
+[⠘] Solc 0.8.30 finished in 671.24ms
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/W2D5/NFTMarket.sol:41:9:
+   |
+41 |         address operator,
+   |         ^^^^^^^^^^^^^^^^
+
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/W2D5/NFTMarket.sol:42:9:
+   |
+42 |         address from,
+   |         ^^^^^^^^^^^^
+
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/W2D5/NFTMarket.sol:43:9:
+   |
+43 |         uint256 tokenId,
+   |         ^^^^^^^^^^^^^^^
+
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/W2D5/NFTMarket.sol:44:9:
+   |
+44 |         bytes calldata data
+   |         ^^^^^^^^^^^^^^^^^^^
+
+Warning (2018): Function state mutability can be restricted to view
+  --> src/W2D5/NFTMarket.sol:40:5:
+   |
+40 |     function onERC721Received(
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 9 tests for test/W2D5/NFTMarket.t.sol:NFTMarketTest
+[PASS] test_buy_fail_repeat() (gas: 116236)
+[PASS] test_buy_fail_self_buy() (gas: 101674)
+[PASS] test_buy_fail_token_not_enough() (gas: 101682)
+[PASS] test_buy_success() (gas: 124042)
+[PASS] test_buy_success_token_more_than_price() (gas: 114609)
+[PASS] test_fuzz_list_and_buy(uint96,uint8) (runs: 257, μ: 118941, ~: 119109)
+[PASS] test_list_fail_not_owner() (gas: 56945)
+[PASS] test_list_success() (gas: 106508)
+[PASS] test_market_never_hold_token() (gas: 115878)
+Suite result: ok. 9 passed; 0 failed; 0 skipped; finished in 35.53ms (35.95ms CPU time)
+
+Ran 1 test suite in 319.71ms (35.53ms CPU time): 9 tests passed, 0 failed, 0 skipped (9 total tests)
