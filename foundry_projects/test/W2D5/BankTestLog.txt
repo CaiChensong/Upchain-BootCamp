@@ -1,0 +1,17 @@
+[⠊] Compiling...
+[⠒] Compiling 1 files with Solc 0.8.30
+[⠑] Solc 0.8.30 finished in 579.32ms
+Compiler run successful!
+
+Ran 8 tests for test/W2D5/Bank.t.sol:BankTest
+[PASS] test_AdminCanWithdraw() (gas: 50712)
+[PASS] test_Deposit() (gas: 72502)
+[PASS] test_Top3Accounts_FourUsers() (gas: 220854)
+[PASS] test_Top3Accounts_OneUser() (gas: 72794)
+[PASS] test_Top3Accounts_SameUserMultipleDeposits() (gas: 161022)
+[PASS] test_Top3Accounts_ThreeUsers() (gas: 188097)
+[PASS] test_Top3Accounts_TwoUsers() (gas: 130367)
+[PASS] test_UserCanNotWithdraw() (gas: 15517)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 7.61ms (21.13ms CPU time)
+
+Ran 1 test suite in 304.31ms (7.61ms CPU time): 8 tests passed, 0 failed, 0 skipped (8 total tests)
