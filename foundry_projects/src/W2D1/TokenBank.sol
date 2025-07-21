@@ -15,7 +15,6 @@ TokenBank 有两个方法：
 import "./ERC20.sol";
 
 contract TokenBank {
-
     address public token;
     mapping(address => uint256) public balances;
 
@@ -29,10 +28,9 @@ contract TokenBank {
     }
 
     function withdraw(uint256 value) public {
-        require (value <= balances[msg.sender], "Token balance is not enough");
+        require(value <= balances[msg.sender], "Token balance is not enough");
 
         require(BaseERC20(token).transfer(msg.sender, value), "Transfer failed");
         balances[msg.sender] -= value;
     }
 }
-

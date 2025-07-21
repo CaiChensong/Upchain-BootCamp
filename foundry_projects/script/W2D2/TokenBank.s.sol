@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// forge script script/W2D4/MyToken.s.sol --private-key $MNEMONIC --rpc-url sepolia --broadcast
-
 import {Script, console} from "forge-std/Script.sol";
-import {MyToken} from "../../src/W2D4/MyToken.sol";
+import "../../src/W2D2/ERC20Hook.sol";
 
-contract MyTokenScript is Script {
-    MyToken public myToken;
+contract TokenBankScript is Script {
+    TokenBankV2 public tokenBank;
+    ERC20Extend public token;
 
     function setUp() public {
         // mnemonic = vm.envString("MNEMONIC");
@@ -20,7 +19,8 @@ contract MyTokenScript is Script {
     function run() public {
         vm.startBroadcast();
 
-        myToken = new MyToken("MyToken", "MTK");
+        token = new ERC20Extend();
+        tokenBank = new TokenBankV2(address(token));
 
         vm.stopBroadcast();
     }
