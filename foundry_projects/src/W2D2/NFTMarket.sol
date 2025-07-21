@@ -14,9 +14,10 @@ pragma solidity ^0.8.0;
 */
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "../W2D2/ERC20Hook.sol";
 
-contract NFTMarket is Receiver {
+contract NFTMarket is Receiver, IERC721Receiver {
 
     address public _token;
     address public _nftToken;
@@ -58,5 +59,15 @@ contract NFTMarket is Receiver {
         prices[tokenId] = 0;
         sellers[tokenId] = address(0);
         return true;
+    }
+
+    function onERC721Received(
+        address operator,
+        address from,
+        uint256 tokenId,
+        bytes calldata data
+    ) external override returns (bytes4) {
+      require(_nftToken == msg.sender, "not autherized address");
+      return this.onERC721Received.selector;
     }
 }
