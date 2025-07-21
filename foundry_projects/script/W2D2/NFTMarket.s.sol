@@ -1,13 +1,16 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-// forge script script/W2D2/TokenBank.s.sol --private-key $MNEMONIC --rpc-url http://127.0.0.1:8545 --broadcast
+// forge script script/W2D2/NFTMarket.s.sol --private-key $MNEMONIC --rpc-url http://127.0.0.1:8545 --broadcast
 
 import {Script, console} from "forge-std/Script.sol";
+import "../../src/W2D2/NFTMarket.sol";
+import "../../src/W2D2/MyNFT.sol";
 import "../../src/W2D2/ERC20Hook.sol";
 
-contract TokenBankScript is Script {
-    TokenBankV2 public tokenBank;
+contract NFTMarketScript is Script {
+    MyNFTMarket public nftMarket;
+    NFTAerialCCC public nft;
     ERC20Extend public token;
 
     function setUp() public {
@@ -22,7 +25,8 @@ contract TokenBankScript is Script {
         vm.startBroadcast();
 
         token = new ERC20Extend();
-        tokenBank = new TokenBankV2(address(token));
+        nft = new NFTAerialCCC();
+        nftMarket = new MyNFTMarket(address(token), address(nft));
 
         vm.stopBroadcast();
     }

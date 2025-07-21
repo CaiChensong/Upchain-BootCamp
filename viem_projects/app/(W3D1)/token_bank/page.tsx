@@ -27,6 +27,7 @@ import { privateKeyToAccount } from "viem/accounts";
 import { useState, useEffect } from "react";
 
 export default function Home() {
+  const RPC_URL = "http://127.0.0.1:8545";
   const PRIVATE_KEY =
     "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
 
@@ -40,7 +41,7 @@ export default function Home() {
   // publicClient
   const publicClient = createPublicClient({
     chain: foundry,
-    transport: http(process.env.RPC_URL!),
+    transport: http(RPC_URL),
   }).extend(publicActions);
 
   // walletClient
@@ -48,7 +49,7 @@ export default function Home() {
   const walletClient = createWalletClient({
     account,
     chain: foundry,
-    transport: http(process.env.RPC_URL!),
+    transport: http(RPC_URL),
   }).extend(publicActions);
 
   // 查询 bank 的 token 余额

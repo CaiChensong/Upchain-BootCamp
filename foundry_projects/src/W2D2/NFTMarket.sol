@@ -17,13 +17,15 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "../W2D2/ERC20Hook.sol";
 
-contract NFTMarket is Receiver, IERC721Receiver {
-
+contract MyNFTMarket is Receiver, IERC721Receiver {
     address public _token;
     address public _nftToken;
 
     mapping(uint256 => uint256) public prices;
     mapping(uint256 => address) public sellers;
+
+    event NFTListed(address indexed seller, uint256 indexed tokenId, uint256 price);
+    event NFTBought(address indexed buyer, uint256 indexed tokenId, uint256 price);
 
     constructor(address token, address nftToken) {
         _token = token;
@@ -34,40 +36,38 @@ contract NFTMarket is Receiver, IERC721Receiver {
         IERC721(_nftToken).safeTransferFrom(msg.sender, address(this), tokenId);
         prices[tokenId] = value;
         sellers[tokenId] = msg.sender;
+        emit NFTListed(msg.sender, tokenId, value);
     }
 
     function buyNFT(uint256 tokenId, uint256 value) public {
         require(value >= prices[tokenId], "paid token not enough");
         ERC20Extend(_token).transferFrom(msg.sender, sellers[tokenId], prices[tokenId]);
         IERC721(_nftToken).safeTransferFrom(address(this), msg.sender, tokenId);
+        emit NFTBought(msg.sender, tokenId, prices[tokenId]);
 
         prices[tokenId] = 0;
         sellers[tokenId] = address(0);
     }
 
-    function tokensReceived(
-        address sender, 
-        uint256 value, 
-        bytes calldata data
-    ) external returns (bool) {
+    function tokensReceived(address sender, uint256 value, bytes calldata data) external returns (bool) {
         require(_token == msg.sender, "not autherized address");
 
         uint256 tokenId = abi.decode(data, (uint256));
         require(value >= prices[tokenId], "paid token not enough");
         IERC721(_nftToken).safeTransferFrom(address(this), sender, tokenId);
+        emit NFTBought(sender, tokenId, prices[tokenId]);
 
         prices[tokenId] = 0;
         sellers[tokenId] = address(0);
         return true;
     }
 
-    function onERC721Received(
-        address operator,
-        address from,
-        uint256 tokenId,
-        bytes calldata data
-    ) external override returns (bytes4) {
-      require(_nftToken == msg.sender, "not autherized address");
-      return this.onERC721Received.selector;
+    function onERC721Received(address operator, address from, uint256 tokenId, bytes calldata data)
+        external
+        override
+        returns (bytes4)
+    {
+        require(_nftToken == msg.sender, "not autherized address");
+        return this.onERC721Received.selector;
     }
 }
