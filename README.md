@@ -14,4 +14,4 @@ Upchain BootCamp S7 Daily Homework
 | W2D5 | ./foundry_projects/test/W2D5                                |
 | W3D1 | ./viem_projects/app/(W3D1)                                  |
 | W3D2 | ./viem_projects/app/(W3D2)                                  |
-| W3D3 | ./viem_projects/app/(W3D3)                                  |
+| W3D3 | ./viem_projects/app/(W3D3), ./foundry_projects/src/W2D4     |
