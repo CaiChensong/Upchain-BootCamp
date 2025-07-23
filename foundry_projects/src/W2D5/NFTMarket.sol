@@ -21,47 +21,67 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract NFTMarket is IERC721Receiver {
-
     address public immutable token;
     address public immutable nftToken;
 
     mapping(uint256 => uint256) public prices;
     mapping(uint256 => address) public sellers;
 
+    event NFTListed(address indexed seller, uint256 indexed tokenId, uint256 price);
+    event NFTBought(address indexed buyer, uint256 indexed tokenId, uint256 price);
+
     constructor(address _token, address _nftToken) {
         token = _token;
         nftToken = _nftToken;
     }
 
-    function onERC721Received(
-        address operator,
-        address from,
-        uint256 tokenId,
-        bytes calldata data
-    ) external override returns (bytes4) {
-      require(nftToken == msg.sender, "not autherized address");
-      return this.onERC721Received.selector;
+    function onERC721Received(address operator, address from, uint256 tokenId, bytes calldata data)
+        external
+        override
+        returns (bytes4)
+    {
+        require(nftToken == msg.sender, "not autherized address");
+        return this.onERC721Received.selector;
     }
 
-    function list(uint tokenId, uint amount) public {
+    function list(uint256 tokenId, uint256 amount) public {
         IERC721(nftToken).safeTransferFrom(msg.sender, address(this), tokenId);
         prices[tokenId] = amount;
         sellers[tokenId] = msg.sender;
+        emit NFTListed(msg.sender, tokenId, amount);
     }
 
-    function buy(uint tokenId, uint amount) external {
-      require(amount >= prices[tokenId], "paid token not enough");
-      require(IERC721(nftToken).ownerOf(tokenId) == address(this), "aleady selled");
-      require(msg.sender != sellers[tokenId], "cannot buy your own NFT");
+    function buy(uint256 tokenId, uint256 amount) external {
+        require(amount >= prices[tokenId], "paid token not enough");
+        require(IERC721(nftToken).ownerOf(tokenId) == address(this), "aleady selled");
+        require(msg.sender != sellers[tokenId], "cannot buy your own NFT");
 
-      IERC20(token).transferFrom(msg.sender, sellers[tokenId], prices[tokenId]);
-      IERC721(nftToken).transferFrom(address(this), msg.sender, tokenId);
+        IERC20(token).transferFrom(msg.sender, sellers[tokenId], prices[tokenId]);
+        IERC721(nftToken).transferFrom(address(this), msg.sender, tokenId);
+        emit NFTBought(msg.sender, tokenId, prices[tokenId]);
 
-      prices[tokenId] = 0;
-      sellers[tokenId] = address(0);
+        prices[tokenId] = 0;
+        sellers[tokenId] = address(0);
+    }
+}
+
+contract MockERC20 is ERC20 {
+    constructor(string memory name_, string memory symbol_) ERC20(name_, symbol_) {}
+
+    function mint(address account, uint256 value) public {
+        _mint(account, value);
+    }
+}
+
+contract MockERC721 is ERC721 {
+    constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {}
+
+    function safeMint(address to, uint256 tokenId) public {
+        _safeMint(to, tokenId);
     }
 }

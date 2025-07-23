@@ -18,28 +18,8 @@ pragma solidity ^0.8.0;
 - 提交 Github 仓库链接到挑战中；
 - 提交 foge test 测试执行结果txt到挑战中；
 */
-
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
-
 import {Test, console} from "forge-std/Test.sol";
-import {NFTMarket} from "../../src/W2D5/NFTMarket.sol";
-
-contract MockERC20 is ERC20 {
-    constructor(string memory name_, string memory symbol_) ERC20(name_, symbol_) {}
-    function mint(address account, uint256 value) public {
-        _mint(account, value);
-    }
-}
-
-contract MockERC721 is ERC721 {
-    constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {}
-    function safeMint(address to, uint256 tokenId) public {
-        _safeMint(to, tokenId);
-    }
-}
+import "../../src/W2D5/NFTMarket.sol";
 
 contract NFTMarketTest is Test {
     NFTMarket public nftMarket;
@@ -61,12 +41,18 @@ contract NFTMarketTest is Test {
         nftToken.safeMint(user2, 2);
         nftToken.safeMint(user3, 3);
 
-        vm.prank(user1); token.approve(address(nftMarket), type(uint256).max);
-        vm.prank(user2); token.approve(address(nftMarket), type(uint256).max);
-        vm.prank(user3); token.approve(address(nftMarket), type(uint256).max);
-        vm.prank(user1); nftToken.approve(address(nftMarket), 1);
-        vm.prank(user2); nftToken.approve(address(nftMarket), 2);
-        vm.prank(user3); nftToken.approve(address(nftMarket), 3);
+        vm.prank(user1);
+        token.approve(address(nftMarket), type(uint256).max);
+        vm.prank(user2);
+        token.approve(address(nftMarket), type(uint256).max);
+        vm.prank(user3);
+        token.approve(address(nftMarket), type(uint256).max);
+        vm.prank(user1);
+        nftToken.approve(address(nftMarket), 1);
+        vm.prank(user2);
+        nftToken.approve(address(nftMarket), 2);
+        vm.prank(user3);
+        nftToken.approve(address(nftMarket), 3);
     }
 
     function test_list_success() public {
@@ -150,7 +136,7 @@ contract NFTMarketTest is Test {
     function test_market_never_hold_token() public {
         vm.prank(user1);
         nftMarket.list(1, 100 ether);
-        
+
         vm.prank(user2);
         nftMarket.buy(1, 100 ether);
         assertEq(token.balanceOf(address(nftMarket)), 0);
