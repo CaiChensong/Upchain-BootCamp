@@ -1,0 +1,61 @@
+$ npx tsx index.ts
+✔ 请选择操作： 生成新私钥
+新生成的私钥: 0x46315fefe976bb40756b5aa7539b1838f2bbbc949a086c1df67d98be6a7c9a4f
+钱包地址: 0xdA81cFd5371591df90551A642248FA18E3E6A4f5
+ETH余额: 0 ETH
+
+请使用其他钱包向本钱包地址转入ETH:
+钱包地址: 0xdA81cFd5371591df90551A642248FA18E3E6A4f5
+等待您完成转账...
+✔ 请确认您已完成ETH转账（或无需转账），按回车继续查询余额。 Yes
+当前钱包最新ETH余额: 0.002 ETH
+现在进入手动构建交易并签名发送的环节。
+✔ 请输入ETH接收方地址: 0x91c035258B5a3B13211A74726d72090734E5BF4a
+✔ 请输入转账金额（ETH）: 0.001
+当前区块号: 8824961n
+当前 gas 价格: 4387836081000000000n
+当前 Nonce: 0
+准备后的交易参数: {
+  account: {
+    address: '0xdA81cFd5371591df90551A642248FA18E3E6A4f5',
+    nonceManager: undefined,
+    sign: [AsyncFunction: sign],
+    signAuthorization: [AsyncFunction: signAuthorization],
+    signMessage: [AsyncFunction: signMessage],
+    signTransaction: [AsyncFunction: signTransaction],
+    signTypedData: [AsyncFunction: signTypedData],
+    source: 'privateKey',
+    type: 'local',
+    publicKey: '0x040cd6849b75471e16762edf69e7de0e1a875f89073c45436c76ee0d9412b3a165e4725978e1954835874f65ba7b0389a17de940244db783d303db55a68f3daba9'
+  },
+  to: '0x91c035258B5a3B13211A74726d72090734E5BF4a',
+  value: 1000000000000000n,
+  chainId: 11155111,
+  type: 'eip1559',
+  chain: {
+    formatters: undefined,
+    fees: undefined,
+    serializers: undefined,
+    id: 11155111,
+    name: 'Sepolia',
+    nativeCurrency: { name: 'Sepolia Ether', symbol: 'ETH', decimals: 18 },
+    rpcUrls: { default: [Object] },
+    blockExplorers: { default: [Object] },
+    contracts: {
+      multicall3: [Object],
+      ensRegistry: [Object],
+      ensUniversalResolver: [Object]
+    },
+    testnet: true
+  },
+  nonce: 0,
+  from: '0xdA81cFd5371591df90551A642248FA18E3E6A4f5',
+  maxPriorityFeePerGas: 1000000000000000n,
+  maxFeePerGas: 5265203297000000000n,
+  gas: 21000n
+}
+Signed Transaction: 0x02f87483aa36a780830f4240850139d4a0618252089491c035258b5a3b13211a74726d72090734e5bf4a87038d7ea4c6800080c080a042f55ec3babc6b8af67f31c876978378bb30320c1442b5b48f9fdbebad54f281a061e47c91c9fc2bad3a536f8562a381820c5824968ec188d681968b1539dde55e
+Transaction Hash: 0x31c5b95b615440299c00b6c026522c7ea439b82b90777d635f5d9966eacbcb1a
+交易状态: 成功
+区块号: 8824963n
+Gas 使用量: 21000
