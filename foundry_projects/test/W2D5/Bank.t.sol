@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -28,7 +28,7 @@ contract BankTest is Test {
     function deposit(address addr, uint256 amount) public {
         vm.deal(addr, amount);
         vm.prank(addr);
-        (bool isDeposit, ) = address(bank).call{value: amount}("");
+        (bool isDeposit,) = address(bank).call{value: amount}("");
         require(isDeposit, "deposit failed");
     }
 
@@ -102,7 +102,7 @@ contract BankTest is Test {
 
     function test_AdminCanWithdraw() public {
         vm.deal(address(bank), 3 ether);
-        uint256 before = address(bank).balance; 
+        uint256 before = address(bank).balance;
 
         address admin = address(0x11);
         vm.startPrank(admin);

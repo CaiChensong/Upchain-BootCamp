@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 // forge script script/W2D4/MyToken.s.sol --private-key $MNEMONIC --rpc-url sepolia --broadcast
@@ -12,7 +12,7 @@ contract MyTokenScript is Script {
     function setUp() public {
         // mnemonic = vm.envString("MNEMONIC");
         // (deployer, ) = deriveRememberKey(mnemonic, 0);
- 
+
         // uint256 deployerPrivateKey = vm.envUint(“PRIVATE_KEY");
         // user = vm.addr(deployerPrivateKey)
     }

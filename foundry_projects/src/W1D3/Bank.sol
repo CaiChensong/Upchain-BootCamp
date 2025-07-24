@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: MIT
+//SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -11,7 +11,6 @@ pragma solidity ^0.8.0;
     - 用数组记录存款金额的前 3 名用户
 */
 contract Bank {
-
     address[] public allAdmins;
     mapping(address => uint256) public accounts;
     address[3] public top3Accounts;
@@ -38,7 +37,7 @@ contract Bank {
         }
     }
 
-    function withdraw(uint amount) public {
+    function withdraw(uint256 amount) public {
         require(isAdmin(msg.sender), "only Admin can withdraw");
         require(address(this).balance >= amount, "contract balance not enough");
         payable(msg.sender).transfer(amount);
@@ -51,8 +50,8 @@ contract Bank {
     }
 
     function isAdmin(address addr) public view returns (bool) {
-        for (uint i = 0; i < allAdmins.length; i++){
-            if (allAdmins[i] == addr ){
+        for (uint256 i = 0; i < allAdmins.length; i++) {
+            if (allAdmins[i] == addr) {
                 return true;
             }
         }
@@ -63,4 +62,3 @@ contract Bank {
         return top3Accounts;
     }
 }
-

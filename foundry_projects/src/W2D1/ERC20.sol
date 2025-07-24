@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -27,7 +27,6 @@ ERC20 是以太坊区块链上最常用的 Token 合约标准。通过这个挑�
 希望你能用一段优雅、高效和安全的代码，完成这个挑战。
 */
 
-
 contract BaseERC20 {
     string public name;
     string public symbol;
@@ -35,9 +34,9 @@ contract BaseERC20 {
 
     uint256 public totalSupply;
 
-    mapping (address => uint256) balances;
+    mapping(address => uint256) balances;
 
-    mapping (address => mapping (address => uint256)) allowances;
+    mapping(address => mapping(address => uint256)) allowances;
 
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
@@ -89,7 +88,3 @@ contract BaseERC20 {
         return allowances[_owner][_spender];
     }
 }
-
-
-
-

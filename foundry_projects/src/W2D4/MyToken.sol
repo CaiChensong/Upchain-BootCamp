@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -24,6 +24,8 @@ forge verify-contract 0xC044905455DBe3ba560FF064304161b9995B1898 src/MyToken.sol
     --etherscan-api-key $ETHERSCAN_API_KEY \
     --chain-id 11155111
 ```
+
+### 合约地址：https://sepolia.etherscan.io/address/0xc044905455dbe3ba560ff064304161b9995b1898
 */
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";

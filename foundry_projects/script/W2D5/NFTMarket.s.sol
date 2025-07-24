@@ -1,7 +1,7 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
-// forge script script/W2D5/NFTMarket.s.sol --private-key $MNEMONIC --rpc-url http://127.0.0.1:8545 --broadcast
+// forge script script/W2D5/NFTMarket.s.sol --private-key $PRIVATE_KEY --rpc-url http://127.0.0.1:8545 --broadcast
 
 import {Script, console} from "forge-std/Script.sol";
 import "../../src/W2D5/NFTMarket.sol";

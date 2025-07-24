@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -15,16 +15,11 @@ import {BaseERC20} from "../W2D1/ERC20.sol";
 import {TokenBank} from "../W2D1/TokenBank.sol";
 
 interface Receiver {
-    function tokensReceived(
-        address sender,
-        uint256 value,
-        bytes calldata data
-    ) external returns (bool);
+    function tokensReceived(address sender, uint256 value, bytes calldata data) external returns (bool);
 }
 
 contract ERC20Extend is BaseERC20 {
-
-    function transferWithCallback(address to, uint amount) external returns (bool) {
+    function transferWithCallback(address to, uint256 amount) external returns (bool) {
         transfer(to, amount);
 
         if (to.code.length > 0) {
@@ -37,14 +32,9 @@ contract ERC20Extend is BaseERC20 {
 }
 
 contract TokenBankV2 is TokenBank, Receiver {
-
     constructor(address _token) TokenBank(_token) {}
 
-    function tokensReceived(
-        address sender,
-        uint256 value,
-        bytes calldata data
-    ) external returns (bool) {
+    function tokensReceived(address sender, uint256 value, bytes calldata data) external returns (bool) {
         require(token == msg.sender, "not autherized address");
         balances[sender] += value;
         return true;

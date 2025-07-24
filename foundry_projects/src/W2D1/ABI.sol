@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: MIT
+//SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -14,23 +14,18 @@ contract ABIEncoder {
         return abi.encode(value);
     }
 
-    function encodeMultiple(
-        uint num,
-        string memory text
-    ) public pure returns (bytes memory) {
+    function encodeMultiple(uint256 num, string memory text) public pure returns (bytes memory) {
         return abi.encode(num, text);
     }
 }
 
 contract ABIDecoder {
-    function decodeUint(bytes memory data) public pure returns (uint) {
-        return abi.decode(data, (uint));
+    function decodeUint(bytes memory data) public pure returns (uint256) {
+        return abi.decode(data, (uint256));
     }
 
-    function decodeMultiple(
-        bytes memory data
-    ) public pure returns (uint, string memory) {
-        return abi.decode(data, (uint, string));
+    function decodeMultiple(bytes memory data) public pure returns (uint256, string memory) {
+        return abi.decode(data, (uint256, string));
     }
 }
 
@@ -45,11 +40,11 @@ contract ABIDecoder {
 contract FunctionSelector {
     uint256 private storedValue;
 
-    function getValue() public view returns (uint) {
+    function getValue() public view returns (uint256) {
         return storedValue;
     }
 
-    function setValue(uint value) public {
+    function setValue(uint256 value) public {
         storedValue = value;
     }
 
@@ -93,7 +88,7 @@ contract DataConsumer {
 
     function getDataByABI() public returns (string memory) {
         // payload
-        bytes memory payload =  abi.encodeWithSignature("getData()");
+        bytes memory payload = abi.encodeWithSignature("getData()");
         (bool success, bytes memory data) = dataStorageAddress.call(payload);
         require(success, "call function \"getData()\" failed");
 
@@ -104,8 +99,8 @@ contract DataConsumer {
     function setDataByABI1(string calldata newData) public returns (bool) {
         // signature
         // payload
-        bytes memory payload =  abi.encodeWithSignature("setData(string)", newData);
-        (bool success, ) = dataStorageAddress.call(payload);
+        bytes memory payload = abi.encodeWithSignature("setData(string)", newData);
+        (bool success,) = dataStorageAddress.call(payload);
         require(success, "call function \"setData(string)\" failed");
 
         return success;
@@ -115,7 +110,7 @@ contract DataConsumer {
         // selector
         // payload
         bytes memory payload = abi.encodeWithSelector(bytes4(keccak256("setData(string)")), newData);
-        (bool success, ) = dataStorageAddress.call(payload);
+        (bool success,) = dataStorageAddress.call(payload);
         require(success, "call function \"setData(string)\" failed");
 
         return success;
@@ -125,7 +120,7 @@ contract DataConsumer {
         // call
         // payload
         bytes memory payload = abi.encodeCall(DataStorage.setData, (newData));
-        (bool success, ) = dataStorageAddress.call(payload);
+        (bool success,) = dataStorageAddress.call(payload);
         require(success, "call function \"setData(string)\" failed");
 
         return success;

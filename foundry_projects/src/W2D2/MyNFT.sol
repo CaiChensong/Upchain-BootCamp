@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -13,9 +13,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract NFTAerialCCC is ERC721URIStorage, Ownable {
     uint256 private _tokenIdCounter = 0;
 
-    constructor()
-    ERC721("NFT_AerialCCC", "AERIALCCC")
-    Ownable(msg.sender) {}
+    constructor() ERC721("NFT_AerialCCC", "AERIALCCC") Ownable(msg.sender) {}
 
     function safeMint(address to, string memory uri) public onlyOwner {
         uint256 tokenId = _tokenIdCounter;
@@ -23,5 +21,4 @@ contract NFTAerialCCC is ERC721URIStorage, Ownable {
         _safeMint(to, tokenId);
         _setTokenURI(tokenId, uri);
     }
-
 }

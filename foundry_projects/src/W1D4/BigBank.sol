@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: MIT
+//SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -15,11 +15,10 @@ BigBank 和 Admin 合约 部署后，把 BigBank 的管理员转移给 Admin 合
 */
 
 interface IBank {
-    function withdraw(uint amount) external;
+    function withdraw(uint256 amount) external;
 }
 
-contract Bank is IBank {
-
+contract BankV2 is IBank {
     address[] public allAdmins;
     mapping(address => uint256) public accounts;
     address[3] public top3Accounts;
@@ -46,7 +45,7 @@ contract Bank is IBank {
         }
     }
 
-    function withdraw(uint amount) virtual external override {
+    function withdraw(uint256 amount) external virtual override {
         require(isAdmin(msg.sender), "only Admin can withdraw");
         require(address(this).balance >= amount, "contract balance not enough");
         payable(msg.sender).transfer(amount);
@@ -59,8 +58,8 @@ contract Bank is IBank {
     }
 
     function isAdmin(address addr) public view returns (bool) {
-        for (uint i = 0; i < allAdmins.length; i++){
-            if (allAdmins[i] == addr ){
+        for (uint256 i = 0; i < allAdmins.length; i++) {
+            if (allAdmins[i] == addr) {
                 return true;
             }
         }
@@ -72,21 +71,19 @@ contract Bank is IBank {
     }
 }
 
-contract BigBank is Bank {
-
-    constructor(address admin) Bank(admin) {
+contract BigBank is BankV2 {
+    constructor(address admin) BankV2(admin) {
         allAdmins.push(admin);
     }
 
-    modifier minBalance(uint amount) {
+    modifier minBalance(uint256 amount) {
         require(
-            address(this).balance - 0.001 ether >= amount,
-            "Contract balance should be over 0.001 ether after deposit."
+            address(this).balance - 0.001 ether >= amount, "Contract balance should be over 0.001 ether after deposit."
         );
         _;
     }
 
-    function withdraw(uint amount) public override minBalance(amount) {
+    function withdraw(uint256 amount) public override minBalance(amount) {
         require(isAdmin(msg.sender), "only Admin can withdraw");
         payable(msg.sender).transfer(amount);
     }
@@ -101,9 +98,7 @@ contract Admin {
 
     receive() external payable {}
 
-    function adminWithdraw(IBank bank, uint amount) public {
+    function adminWithdraw(IBank bank, uint256 amount) public {
         bank.withdraw(amount);
     }
 }
-
-

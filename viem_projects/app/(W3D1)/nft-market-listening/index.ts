@@ -7,6 +7,10 @@
 在 NFTMarket 合约中在上架（list）和买卖函数（buyNFT、tokensReceived）中添加相应事件，在后台监听上架和买卖事件，如果链上发生了上架或买卖行为，打印出相应的日志。
 
 请提交 github 代码
+
+相关合约：
+- foundry_projects/src/W2D2/MyNFTMarket.sol
+- foundry_projects/src/W2D2/MyNFT.sol
 */
 
 import { useEffect } from "react";

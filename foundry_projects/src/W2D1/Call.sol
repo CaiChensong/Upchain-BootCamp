@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: MIT
+//SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -44,14 +44,13 @@ contract Callee4 {
 contract Caller4 {
     function sendEther(address to, uint256 amount) public returns (bool) {
         // 使用 call 发送 ether
-        (bool success, ) = to.call{value: amount}(new bytes(0));
+        (bool success,) = to.call{value: amount}(new bytes(0));
         require(success, "sendEther failed");
         return success;
     }
 
     receive() external payable {}
 }
-
 
 /*
 题目#5
@@ -80,13 +79,13 @@ contract Callee5 {
 contract Caller5 {
     function callSetValue(address callee, uint256 value) public returns (bool) {
         // call setValue()
-        (bool success, ) = callee.call{value: 1 ether}(abi.encodeWithSignature("setValue(uint256)", value));
+        (bool success,) = callee.call{value: 1 ether}(abi.encodeWithSignature("setValue(uint256)", value));
         require(success, "call function failed");
         return success;
     }
+
     receive() external payable {}
 }
-
 
 /*
 题目#6
@@ -110,10 +109,7 @@ contract Caller6 {
 
     function delegateSetValue(address callee, uint256 _newValue) public {
         // delegatecall setValue()
-        (bool success, ) = callee.delegatecall(abi.encodeWithSignature("setValue(uint256)", _newValue));
+        (bool success,) = callee.delegatecall(abi.encodeWithSignature("setValue(uint256)", _newValue));
         require(success, "delegate call failed");
     }
 }
-
-
-

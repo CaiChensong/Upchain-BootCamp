@@ -8,6 +8,9 @@
 并在 NFTMarket 前端添加上架操作，切换另一个账号后可使用 Token 进行购买 NFT。
 
 提交 github 仓库地址，请在仓库中包含 NFT 上架后的截图。
+
+相关合约：
+- foundry_projects/src/W2D5/NFTMarket.sol
 */
 
 import ERC20_ABI from "./abi/MockERC20.json" with { type: "json" };

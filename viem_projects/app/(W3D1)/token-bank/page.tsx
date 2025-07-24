@@ -9,6 +9,10 @@
 - 存款后显示用户存款金额，同时支持用户取款(点击按钮取款)。
 
 提交的 github 仓库需要包含一个存款后的截图。
+
+相关合约：
+- foundry_projects/src/W3D1/ERC20.sol
+- foundry_projects/src/W3D1/TokenBank.sol
 */
 
 import {

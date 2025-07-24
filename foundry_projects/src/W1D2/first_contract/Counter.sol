@@ -1,4 +1,4 @@
-//SPDX-License-Identifier: MIT
+//SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
 /*
@@ -13,16 +13,14 @@ Counter 合约具有：
 
 请在回答框内提交调用 add(x) 的交易 Hash 的区块链浏览器的 URL。
 */
-contract Counter{
+contract Counter {
     uint256 public counter;
-    
-    function get() public view returns (uint){
+
+    function get() public view returns (uint256) {
         return counter;
     }
-    
+
     function add(uint256 x) public {
         counter += x;
     }
 }
-
-
