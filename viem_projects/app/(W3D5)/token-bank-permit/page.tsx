@@ -78,12 +78,12 @@ export default function Home() {
             refetchBankBalance={refetchBankBalance}
           />
         </div>
-        {/* <div className="flex-1 flex flex-col gap-4 max-w-md w-full">
+        <div className="flex-1 flex flex-col gap-4 max-w-md w-full">
           <DepositWithPermit2
             refetchErc20Balance={refetchErc20Balance}
             refetchBankBalance={refetchBankBalance}
           />
-        </div> */}
+        </div>
       </div>
 
       <div className="w-full max-w-4xl flex flex-col md:flex-row gap-8 mb-12 justify-center">
@@ -107,12 +107,12 @@ export default function Home() {
 }
 
 const erc20PermitTokenContractConfig = {
-  address: "0x5FbDB2315678afecb367f032d93F642f64180aa3" as `0x${string}`, // ERC20 Token合约地址
+  address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" as `0x${string}`, // ERC20 Token合约地址
   abi: ERC20_PERMIT_TOKEN_ABI,
 };
 
 const tokenBankPermitContractConfig = {
-  address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512" as `0x${string}`, // TokenBank合约地址
+  address: "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0" as `0x${string}`, // TokenBank合约地址
   abi: TOKEN_BANK_PERMIT_ABI,
 };
 
@@ -401,6 +401,24 @@ function DepositWithPermit2({
     error,
   ]);
 
+  const handleApprovePermit2 = (amount: string) => {
+    if (!address) {
+      alert("请先连接钱包！");
+      return;
+    }
+    if (!amount) {
+      alert("请填写Token数量！");
+      return;
+    }
+
+    // 调用erc20合约的approve方法，授权permit2合约使用代币
+    writeContract({
+      ...erc20PermitTokenContractConfig,
+      functionName: "approve",
+      args: [permit2ContractConfig.address, parseEther(amount)],
+    });
+  };
+
   const handleDepositWithPermit = async (amount: string) => {
     if (!address) {
       alert("请先连接钱包！");
@@ -432,6 +450,10 @@ function DepositWithPermit2({
       };
 
       const types = {
+        TokenPermissions: [
+          { name: "token", type: "address" },
+          { name: "amount", type: "uint256" },
+        ],
         PermitSingle: [
           { name: "details", type: "PermitDetails" },
           { name: "spender", type: "address" },
@@ -527,11 +549,20 @@ function DepositWithPermit2({
           授权存款（Permit2）
         </button>
       </div>
+      <div className="flex gap-2 items-center">
+        <button
+          disabled={isPending}
+          onClick={() => handleApprovePermit2(amount)}
+          className="rounded-lg bg-yellow-600 text-white px-4 py-2 font-semibold shadow hover:bg-yellow-400 transition"
+        >
+          授权Permit2合约
+        </button>
+      </div>
 
       <div className="w-full bg-gray-800 rounded-xl p-4 mt-2">
         <span className="font-bold text-white text-sm">说明：</span>
         <span className="text-white text-sm">
-          使用 Permit2 合约实现的签名授权存款功能，签名默认有效期一小时。
+          先点击"授权Permit2"允许Permit2合约使用您的代币，再点击"授权存款（Permit2）"进行签名存款，签名默认有效期一小时。
         </span>
       </div>
 
