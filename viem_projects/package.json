@@ -12,10 +12,13 @@
     "@reown/appkit": "^1.7.16",
     "@reown/appkit-adapter-wagmi": "^1.7.16",
     "@tanstack/react-query": "^5.83.0",
+    "@types/sqlite3": "^3.1.11",
     "inquirer": "^12.8.2",
     "next": "15.4.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
     "viem": "^2.33.0",
     "wagmi": "^2.16.0"
   },
