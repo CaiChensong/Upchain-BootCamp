@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: UNLICENSED
-pragma solidity ^0.8.17;
+pragma solidity ^0.8.0;
 
 /*
 使用 EIP2612 标准（可基于 Openzepplin 库）编写一个自己名称的 Token 合约。

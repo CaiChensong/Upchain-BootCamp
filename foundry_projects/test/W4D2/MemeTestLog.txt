@@ -1,0 +1,26 @@
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 14 tests for test/W4D2/MemeFactory.t.sol:MemeFactoryTest
+[PASS] testDeployMeme() (gas: 288241)
+[PASS] testEdgeCases() (gas: 377573)
+[PASS] testEventEmission() (gas: 406634)
+[PASS] testFeeDistribution() (gas: 399235)
+[PASS] testGasEfficiency() (gas: 1692519)
+Logs:
+  Base deployment gas: 1461690
+  Factory deployment gas: 218290
+  Gas savings: 1243400
+
+[PASS] testInsufficientPayment() (gas: 289630)
+[PASS] testInvalidTokenAddress() (gas: 23356)
+[PASS] testMintAmountCorrect() (gas: 573209)
+[PASS] testMultipleMemeDeployment() (gas: 785320)
+[PASS] testNotExceedTotalSupply() (gas: 463252)
+[PASS] testOnlyFactoryCanMint() (gas: 277784)
+[PASS] testParameterValidation() (gas: 21675)
+[PASS] testRefundExcessPayment() (gas: 398588)
+[PASS] testReinitialize() (gas: 277826)
+Suite result: ok. 14 passed; 0 failed; 0 skipped; finished in 11.73ms (13.65ms CPU time)
+
+Ran 1 test suite in 43.18s (11.73ms CPU time): 14 tests passed, 0 failed, 0 skipped (14 total tests)
