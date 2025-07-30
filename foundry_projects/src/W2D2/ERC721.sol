@@ -258,7 +258,7 @@ contract BaseERC721 {
 
         _approve(address(0), tokenId);
 
-        _owners[tokenId] == to;
+        _owners[tokenId] = to;
         _balances[from]--;
         _balances[to]++;
 

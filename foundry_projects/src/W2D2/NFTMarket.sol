@@ -54,6 +54,8 @@ contract MyNFTMarket is Receiver, IERC721Receiver {
 
         uint256 tokenId = abi.decode(data, (uint256));
         require(value >= prices[tokenId], "paid token not enough");
+
+        ERC20Extend(_token).transfer(sellers[tokenId], prices[tokenId]);
         IERC721(_nftToken).safeTransferFrom(address(this), sender, tokenId);
         emit NFTBought(sender, tokenId, prices[tokenId]);
 

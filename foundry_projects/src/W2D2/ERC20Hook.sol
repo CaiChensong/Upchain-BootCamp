@@ -19,11 +19,11 @@ interface Receiver {
 }
 
 contract ERC20Extend is BaseERC20 {
-    function transferWithCallback(address to, uint256 amount) external returns (bool) {
+    function transferWithCallback(address to, uint256 amount, bytes calldata data) external returns (bool) {
         transfer(to, amount);
 
         if (to.code.length > 0) {
-            bool rv = Receiver(to).tokensReceived(msg.sender, amount, "");
+            bool rv = Receiver(to).tokensReceived(msg.sender, amount, data);
             require(rv, "No tokensReceived");
         }
 
