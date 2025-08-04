@@ -12,7 +12,7 @@ pragma solidity ^0.8.0;
 */
 
 import {BaseERC20} from "../W2D1/ERC20.sol";
-import {TokenBank} from "../W2D1/TokenBank.sol";
+import {TokenBankV1} from "../W2D1/TokenBankV1.sol";
 
 interface Receiver {
     function tokensReceived(address sender, uint256 value, bytes calldata data) external returns (bool);
@@ -31,8 +31,8 @@ contract ERC20Extend is BaseERC20 {
     }
 }
 
-contract TokenBankV2 is TokenBank, Receiver {
-    constructor(address _token) TokenBank(_token) {}
+contract TokenBankV2 is TokenBankV1, Receiver {
+    constructor(address _token) TokenBankV1(_token) {}
 
     function tokensReceived(address sender, uint256 value, bytes calldata data) external returns (bool) {
         require(token == msg.sender, "not autherized address");

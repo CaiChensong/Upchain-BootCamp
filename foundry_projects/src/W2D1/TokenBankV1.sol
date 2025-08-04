@@ -14,7 +14,7 @@ TokenBank 有两个方法：
 
 import "./ERC20.sol";
 
-contract TokenBank {
+contract TokenBankV1 {
     address public token;
     mapping(address => uint256) public balances;
 

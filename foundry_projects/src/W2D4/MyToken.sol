@@ -12,7 +12,7 @@ pragma solidity ^0.8.0;
 
 ### 部署命令
 ```shell
-forge script script/MyToken.s.sol --private-key $MNEMONIC --rpc-url sepolia --broadcast --
+forge script script/MyToken.s.sol --private-key $PRIVATE_KEY --rpc-url sepolia --broadcast
 ```
 
 ### 开源验证命令
