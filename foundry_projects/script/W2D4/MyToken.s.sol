@@ -21,6 +21,7 @@ contract MyTokenScript is Script {
         vm.startBroadcast();
 
         myToken = new MyToken("MyToken", "MTK");
+        console.log("MyToken deployed at:", address(myToken));
 
         vm.stopBroadcast();
     }
