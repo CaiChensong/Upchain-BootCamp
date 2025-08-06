@@ -7,3 +7,6 @@
 [submodule "foundry_projects/lib/openzeppelin-contracts-upgradeable"]
 	path = foundry_projects/lib/openzeppelin-contracts-upgradeable
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable
+[submodule "foundry_projects/lib/chainlink-brownie-contracts"]
+	path = foundry_projects/lib/chainlink-brownie-contracts
+	url = https://github.com/smartcontractkit/chainlink-brownie-contracts

@@ -21,18 +21,19 @@ $ forge script script/Counter.s.sol:CounterScript \
     --rpc-url $LOCAL_RPC_URL \
     --private-key $PRIVATE_KEY \
     --broadcast \
-    --verify \
-    -vvvv
+    --verify
+
+forge create src/Counter.sol:Counter
+    --rpc-url $RPC_URL \
+    --private-key $PRIVATE_KEY \
+    --broadcast \
+    --verify
 ```
 
 ### Get ABI Json
 
 ```shell
 forge inspect src/Counter.sol:Counter abi --json > Counter.json
-
-
-forge inspect lib/openzeppelin-contracts/contracts/proxy/transparent/TransparentUpgradeableProxy.sol:TransparentUpgradeableProxy abi --json > TransparentUpgradeableProxy.json
-
 ```
 
 ### Remapping
@@ -130,3 +131,8 @@ UpgradeableNFTMarket 代理合约
 
 - 代码：foundry_projects/lib/openzeppelin-contracts/contracts/proxy/transparent/TransparentUpgradeableProxy.sol
 - 地址：https://sepolia.etherscan.io/address/0x92C5Eb78B93DE6b78e9d24a40bf7e6c34cB199e8
+
+AutoBank 合约
+
+- 代码：foundry_projects/src/W5D3/AutoBank.sol
+- 地址：https://sepolia.etherscan.io/address/0x9adC5426B14cd65783E196133AcF60C33f15277c
