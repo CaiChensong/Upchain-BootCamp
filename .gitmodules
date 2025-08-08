@@ -10,3 +10,6 @@
 [submodule "foundry_projects/lib/chainlink-brownie-contracts"]
 	path = foundry_projects/lib/chainlink-brownie-contracts
 	url = https://github.com/smartcontractkit/chainlink-brownie-contracts
+[submodule "uniswap_v2_fork/lib/forge-std"]
+	path = uniswap_v2_fork/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
