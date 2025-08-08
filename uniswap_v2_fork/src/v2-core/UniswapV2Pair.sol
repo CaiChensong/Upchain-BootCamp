@@ -52,7 +52,7 @@ contract UniswapV2Pair is IUniswapV2Pair, UniswapV2ERC20 {
         require(success && (data.length == 0 || abi.decode(data, (bool))), "UniswapV2: TRANSFER_FAILED");
     }
 
-    constructor() public {
+    constructor() {
         factory = msg.sender;
     }
 

@@ -1,6 +1,6 @@
 pragma solidity >=0.6.6;
 
-import "../libraries/SafeMath.sol";
+import "@uniswap/v2-core/contracts/libraries/SafeMath.sol";
 
 contract ERC20 {
     using SafeMath for uint256;
@@ -20,7 +20,7 @@ contract ERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
     event Transfer(address indexed from, address indexed to, uint256 value);
 
-    constructor(uint256 _totalSupply) public {
+    constructor(uint256 _totalSupply) {
         uint256 chainId;
         assembly {
             chainId := chainid()

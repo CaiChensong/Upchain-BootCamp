@@ -1,8 +1,8 @@
 pragma solidity >=0.5.0;
 
 import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Pair.sol";
-
-import "./SafeMath.sol";
+import "@uniswap/v2-core/contracts/interfaces/IUniswapV2Factory.sol";
+import "@uniswap/v2-core/contracts/libraries/SafeMath.sol";
 
 library UniswapV2Library {
     using SafeMath for uint256;
@@ -15,7 +15,7 @@ library UniswapV2Library {
     }
 
     // calculates the CREATE2 address for a pair without making any external calls
-    function pairFor(address factory, address tokenA, address tokenB) internal pure returns (address pair) {
+    function pairFor(address factory, address tokenA, address tokenB) internal view returns (address pair) {
         (address token0, address token1) = sortTokens(tokenA, tokenB);
         bytes32 initCodeHash = IUniswapV2Factory(factory).getInitCodePairHash();
         pair = address(
