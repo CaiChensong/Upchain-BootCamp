@@ -6,3 +6,7 @@ erc4626-tests/=lib/openzeppelin-contracts-upgradeable/lib/erc4626-tests/
 forge-std/=lib/forge-std/src/
 halmos-cheatcodes/=lib/openzeppelin-contracts-upgradeable/lib/halmos-cheatcodes/src/
 openzeppelin-contracts/=lib/openzeppelin-contracts/
+
+uniswap-v2/=lib/uniswap_v2_fork/src/
+@uniswap/v2-core/contracts/=lib/uniswap_v2_fork/src/v2-core/
+@uniswap/lib/contracts/=lib/uniswap_v2_fork/src/solidity-lib/
