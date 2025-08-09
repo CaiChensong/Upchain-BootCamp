@@ -1,0 +1,183 @@
+No files changed, compilation skipped
+
+Ran 4 tests for test/W5D5/MemeOracle.t.sol:MemeOracleTest
+[PASS] testCompleteFlow() (gas: 4881756)
+Logs:
+  Setting up test environment...
+  WETH deployed at: 0x88F59F8826af5e695B13cA934d6c7999875A9EeA
+  Uniswap V2 Factory deployed at: 0xCeF98e10D1e80378A9A74Ce074132B66CDD5e88d
+  Uniswap V2 Router deployed at: 0x72cC13426cAfD2375FFABE56498437927805d3d2
+  MemeLaunchPad deployed at: 0x98B3c60ADE6A87b229Aa7d91ad27c227d54d95C0
+  MemeOracle deployed at: 0xe95fEFbaa79748B66DEfb3D662A12541e4d5Cdc8
+  Test Meme token deployed at: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Test setup completed
+  
+=== Starting Complete TWAP Oracle Test Flow ===
+  
+--- Step 1: Minting Memes to Add Liquidity ---
+  Using deployed Meme token: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Mint price per transaction: 10000000000000000
+  Uniswap pair created at: 0xCD145DaC37D155622c1A65c69bd10349c02B09d1
+  User1 meme balance: 1000
+  Liquidity added successfully
+  
+--- Step 2: Initialize TWAP Oracle ---
+  TWAP Oracle initialized for token: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Default period: 3600 seconds
+  Oracle initialization status: true
+  Initial pair reserves:
+  Reserve0: 500000000000000
+  Reserve1: 50
+  
+--- Step 3: Simulating Trades Over Time ---
+  Initial observation recorded
+  
+> Trade 1 - Buyer2 buys with 1 ETH
+  Bought tokens: 49
+  User token balance: 49
+  After Trade 1 - Current reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+Time advanced by 30 minutes
+  
+> Trade 2 - Buyer3 mints through LaunchPad
+  After Trade 2 - Current reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+Time advanced by 30 minutes (total: 1 hour)
+  
+> Trade 3 - Buyer1 large buy with 2 ETH
+  Swap failed: UniswapV2: INSUFFICIENT_OUTPUT_AMOUNT
+  After Trade 3 - Current reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+Time advanced by 15 minutes
+  Final observation updated
+  
+--- Step 4: Testing TWAP Calculations ---
+  
+> Testing different TWAP periods:
+  TWAP (15 minutes): 5194893006964095042344761577384706048000000000000000
+  TWAP (30 minutes): 5194893006964095042344761577384706048000000000000000
+  TWAP (1 hour): 5194893006964095042344761577384706048000000000000000
+  TWAP (default period): 5194893006964095042344761577384706048000000000000000
+  
+> Oracle functionality verification:
+  Is initialized: true
+  Current spot price (WETH per token): 1000500000000000000000000000000000000
+  Final pair reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+=== Complete TWAP Oracle Test Flow Finished ===
+
+[PASS] testOracleBasicFunctionality() (gas: 4888991)
+Logs:
+  Setting up test environment...
+  WETH deployed at: 0x88F59F8826af5e695B13cA934d6c7999875A9EeA
+  Uniswap V2 Factory deployed at: 0xCeF98e10D1e80378A9A74Ce074132B66CDD5e88d
+  Uniswap V2 Router deployed at: 0x72cC13426cAfD2375FFABE56498437927805d3d2
+  MemeLaunchPad deployed at: 0x98B3c60ADE6A87b229Aa7d91ad27c227d54d95C0
+  MemeOracle deployed at: 0xe95fEFbaa79748B66DEfb3D662A12541e4d5Cdc8
+  Test Meme token deployed at: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Test setup completed
+  
+=== Testing Oracle Basic Functionality ===
+  
+=== Starting Complete TWAP Oracle Test Flow ===
+  
+--- Step 1: Minting Memes to Add Liquidity ---
+  Using deployed Meme token: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Mint price per transaction: 10000000000000000
+  Uniswap pair created at: 0xCD145DaC37D155622c1A65c69bd10349c02B09d1
+  User1 meme balance: 1000
+  Liquidity added successfully
+  
+--- Step 2: Initialize TWAP Oracle ---
+  TWAP Oracle initialized for token: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Default period: 3600 seconds
+  Oracle initialization status: true
+  Initial pair reserves:
+  Reserve0: 500000000000000
+  Reserve1: 50
+  
+--- Step 3: Simulating Trades Over Time ---
+  Initial observation recorded
+  
+> Trade 1 - Buyer2 buys with 1 ETH
+  Bought tokens: 49
+  User token balance: 49
+  After Trade 1 - Current reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+Time advanced by 30 minutes
+  
+> Trade 2 - Buyer3 mints through LaunchPad
+  After Trade 2 - Current reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+Time advanced by 30 minutes (total: 1 hour)
+  
+> Trade 3 - Buyer1 large buy with 2 ETH
+  Swap failed: UniswapV2: INSUFFICIENT_OUTPUT_AMOUNT
+  After Trade 3 - Current reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+Time advanced by 15 minutes
+  Final observation updated
+  
+--- Step 4: Testing TWAP Calculations ---
+  
+> Testing different TWAP periods:
+  TWAP (15 minutes): 5194893006964095042344761577384706048000000000000000
+  TWAP (30 minutes): 5194893006964095042344761577384706048000000000000000
+  TWAP (1 hour): 5194893006964095042344761577384706048000000000000000
+  TWAP (default period): 5194893006964095042344761577384706048000000000000000
+  
+> Oracle functionality verification:
+  Is initialized: true
+  Current spot price (WETH per token): 1000500000000000000000000000000000000
+  Final pair reserves:
+  Reserve0: 1000500000000000000
+  Reserve1: 1
+  
+=== Complete TWAP Oracle Test Flow Finished ===
+  Oracle basic functionality test passed
+
+[PASS] testOracleErrorConditions() (gas: 34269)
+Logs:
+  Setting up test environment...
+  WETH deployed at: 0x88F59F8826af5e695B13cA934d6c7999875A9EeA
+  Uniswap V2 Factory deployed at: 0xCeF98e10D1e80378A9A74Ce074132B66CDD5e88d
+  Uniswap V2 Router deployed at: 0x72cC13426cAfD2375FFABE56498437927805d3d2
+  MemeLaunchPad deployed at: 0x98B3c60ADE6A87b229Aa7d91ad27c227d54d95C0
+  MemeOracle deployed at: 0xe95fEFbaa79748B66DEfb3D662A12541e4d5Cdc8
+  Test Meme token deployed at: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Test setup completed
+  
+=== Testing Oracle Error Conditions ===
+  Oracle error condition tests passed
+
+[PASS] testOracleInitialization() (gas: 4172433)
+Logs:
+  Setting up test environment...
+  WETH deployed at: 0x88F59F8826af5e695B13cA934d6c7999875A9EeA
+  Uniswap V2 Factory deployed at: 0xCeF98e10D1e80378A9A74Ce074132B66CDD5e88d
+  Uniswap V2 Router deployed at: 0x72cC13426cAfD2375FFABE56498437927805d3d2
+  MemeLaunchPad deployed at: 0x98B3c60ADE6A87b229Aa7d91ad27c227d54d95C0
+  MemeOracle deployed at: 0xe95fEFbaa79748B66DEfb3D662A12541e4d5Cdc8
+  Test Meme token deployed at: 0x9d98f5d796Ca3C34E23701E5361B169bB585df65
+  Test setup completed
+  
+=== Testing Oracle Initialization ===
+  Oracle initialization test passed
+
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 4.51ms (4.53ms CPU time)
+
+Ran 1 test suite in 310.11ms (4.51ms CPU time): 4 tests passed, 0 failed, 0 skipped (4 total tests)
