@@ -1,0 +1,65 @@
+% forge test --match-contract MemeLaunchPadTest -vv
+
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 20 tests for test/W5D4/MemeLaunchPad.t.sol:MemeLaunchPadTest
+[PASS] testBuyMemeFailures() (gas: 4016263)
+[PASS] testBuyMemeVsMintMemeComparison() (gas: 4651855)
+Logs:
+  === Testing buyMeme vs mintMeme price comparison ===
+  Step 1: Added initial liquidity
+  Uniswap price (tokens per ETH): 49
+  Mint price per token: 10000000000000
+  Effective uniswap price per token (wei): 20408163265306122
+  Case: Uniswap price is better
+  Success: buyMeme worked when Uniswap price is better
+  Step 4: Creating artificial price difference for comprehensive testing
+  Performed additional mints to affect price
+  New Uniswap price: 16
+  Mint price per token: 10000000000000
+  After multiple mints: Uniswap still better, testing buy
+  Comprehensive price comparison test completed
+
+[PASS] testBuyMemeWhenUniswapCheaper() (gas: 4242602)
+Logs:
+  Uniswap price (tokens per ETH): 49
+  Mint price per token (wei): 10000000000000
+  Uniswap price is better, testing buy functionality
+  Successfully bought tokens through Uniswap
+
+[PASS] testCompleteFlow() (gas: 4314565)
+Logs:
+  === Complete Flow Test ===
+  Step 1: First mint with liquidity addition
+  Success: Liquidity added, user received tokens
+  Step 2: Second mint
+  Success: Second user minted successfully
+  Step 3: Check Uniswap price
+  Uniswap price: 49
+  Mint price: 10000000000000
+  Step 3.1: Uniswap price is better, testing buy functionality
+  Success: Bought tokens through Uniswap when price is better
+  Step 3.2: Testing price query functions
+  Success: Price query functions work correctly
+  === Complete Flow Test Finished ===
+
+[PASS] testDeployMeme() (gas: 229048)
+[PASS] testDeployMemeFailures() (gas: 21459)
+[PASS] testGetUniswapPriceWithLiquidity() (gas: 4031314)
+[PASS] testGetUniswapPriceWithoutLiquidity() (gas: 470936)
+[PASS] testLiquidityAddition() (gas: 4015384)
+[PASS] testLiquidityNotAddedTwice() (gas: 4067376)
+[PASS] testMemeTokenMinting() (gas: 4005015)
+[PASS] testMemeTokenProperties() (gas: 43007)
+[PASS] testMintMeme() (gas: 4012020)
+[PASS] testMintMemeFailures() (gas: 46243)
+[PASS] testMintMemeWithOverpayment() (gas: 4011443)
+[PASS] testSetUp() (gas: 46289)
+[PASS] testUpdateProjectOwner() (gas: 22653)
+[PASS] testUpdateProjectOwnerFailures() (gas: 21879)
+[PASS] testUpdateUniswapRouter() (gas: 23017)
+[PASS] testUpdateUniswapRouterFailures() (gas: 21816)
+Suite result: ok. 20 passed; 0 failed; 0 skipped; finished in 12.23ms (23.77ms CPU time)
+
+Ran 1 test suite in 307.61ms (12.23ms CPU time): 20 tests passed, 0 failed, 0 skipped (20 total tests)
