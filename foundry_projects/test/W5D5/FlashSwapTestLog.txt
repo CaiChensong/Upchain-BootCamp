@@ -1,0 +1,102 @@
+% forge test --match-contract FlashSwapTest -vv
+[⠊] Compiling...
+[⠃] Compiling 2 files with Solc 0.8.30
+[⠊] Solc 0.8.30 finished in 847.48ms
+
+Ran 3 tests for test/W5D5/FlashSwap.t.sol:FlashSwapTest
+[PASS] testExecuteFlashSwapArbitrage() (gas: 359283)
+Logs:
+  Setting up FlashSwap test environment...
+  WETH deployed at: 0x72cC13426cAfD2375FFABE56498437927805d3d2
+  TokenA deployed at: 0x88F59F8826af5e695B13cA934d6c7999875A9EeA
+  TokenB deployed at: 0xCeF98e10D1e80378A9A74Ce074132B66CDD5e88d
+  FactoryA deployed at: 0x98B3c60ADE6A87b229Aa7d91ad27c227d54d95C0
+  FactoryB deployed at: 0xe95fEFbaa79748B66DEfb3D662A12541e4d5Cdc8
+  RouterA deployed at: 0x0a6dA0C3010c30cBBbA9dFaF6868583D180818e7
+  RouterB deployed at: 0x9B5491D1899dB14bfA4Bb1D91d24f007943bEd1D
+  PoolA liquidity added successfully
+  PoolB liquidity added successfully
+  Liquidity pools setup completed
+  FlashSwap deployed at: 0x7BD1119CEC127eeCDBa5DCA7d1Bd59986f6d7353
+  Gave initial tokens to FlashSwap:
+  TokenA: 1000000000000000000000
+  TokenB: 1000000000000000000000
+  Test setup completed
+  
+=== Testing FlashSwap Arbitrage Execution ===
+  Initial balances:
+  User TokenA: 1000000000000000000000
+  User TokenB: 1000000000000000000000
+  PoolA initial
+  TokenA: 10000000000000000000000
+  TokenB: 10000000000000000000000
+  PoolB initial
+  TokenA: 10000000000000000000000
+  TokenB: 50000000000000000000000
+  Borrow amount: 1000000000000000000000
+  Executing flash swap arbitrage...
+  Flash swap arbitrage executed successfully!
+  Final balances:
+  User TokenA: 2000000000000000000000
+  User TokenB: 5414872722375947741301
+  PoolA final
+  TokenA: 9000000000000000000000
+  TokenB: 11118181747024797916605
+  PoolB final
+  TokenA: 11000000000000000000000
+  TokenB: 45466945530599254342094
+  Balance changes:
+  User TokenA change: 1000000000000000000000
+  User TokenB change: 4414872722375947741301
+  Flash swap arbitrage test completed successfully!
+  Arbitrage profit in TokenB: 4414872722375947741301
+
+[PASS] testFlashSwapDeployment() (gas: 29966)
+Logs:
+  Setting up FlashSwap test environment...
+  WETH deployed at: 0x72cC13426cAfD2375FFABE56498437927805d3d2
+  TokenA deployed at: 0x88F59F8826af5e695B13cA934d6c7999875A9EeA
+  TokenB deployed at: 0xCeF98e10D1e80378A9A74Ce074132B66CDD5e88d
+  FactoryA deployed at: 0x98B3c60ADE6A87b229Aa7d91ad27c227d54d95C0
+  FactoryB deployed at: 0xe95fEFbaa79748B66DEfb3D662A12541e4d5Cdc8
+  RouterA deployed at: 0x0a6dA0C3010c30cBBbA9dFaF6868583D180818e7
+  RouterB deployed at: 0x9B5491D1899dB14bfA4Bb1D91d24f007943bEd1D
+  PoolA liquidity added successfully
+  PoolB liquidity added successfully
+  Liquidity pools setup completed
+  FlashSwap deployed at: 0x7BD1119CEC127eeCDBa5DCA7d1Bd59986f6d7353
+  Gave initial tokens to FlashSwap:
+  TokenA: 1000000000000000000000
+  TokenB: 1000000000000000000000
+  Test setup completed
+  
+=== Testing FlashSwap Deployment ===
+  FlashSwap deployment verified successfully!
+
+[PASS] testLiquidityPoolsSetup() (gas: 81273)
+Logs:
+  Setting up FlashSwap test environment...
+  WETH deployed at: 0x72cC13426cAfD2375FFABE56498437927805d3d2
+  TokenA deployed at: 0x88F59F8826af5e695B13cA934d6c7999875A9EeA
+  TokenB deployed at: 0xCeF98e10D1e80378A9A74Ce074132B66CDD5e88d
+  FactoryA deployed at: 0x98B3c60ADE6A87b229Aa7d91ad27c227d54d95C0
+  FactoryB deployed at: 0xe95fEFbaa79748B66DEfb3D662A12541e4d5Cdc8
+  RouterA deployed at: 0x0a6dA0C3010c30cBBbA9dFaF6868583D180818e7
+  RouterB deployed at: 0x9B5491D1899dB14bfA4Bb1D91d24f007943bEd1D
+  PoolA liquidity added successfully
+  PoolB liquidity added successfully
+  Liquidity pools setup completed
+  FlashSwap deployed at: 0x7BD1119CEC127eeCDBa5DCA7d1Bd59986f6d7353
+  Gave initial tokens to FlashSwap:
+  TokenA: 1000000000000000000000
+  TokenB: 1000000000000000000000
+  Test setup completed
+  
+=== Testing Liquidity Pools Setup ===
+  Liquidity pools setup verified successfully!
+  PoolA reserves - TokenA: 10000000000000000000000 TokenB: 10000000000000000000000
+  PoolB reserves - TokenA: 10000000000000000000000 TokenB: 50000000000000000000000
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 12.62ms (3.34ms CPU time)
+
+Ran 1 test suite in 316.38ms (12.62ms CPU time): 3 tests passed, 0 failed, 0 skipped (3 total tests)
