@@ -1,0 +1,53 @@
+% forge test --match-contract StakingPoolTest -vvv
+[⠊] Compiling...
+[⠑] Compiling 1 files with Solc 0.8.30
+[⠘] Solc 0.8.30 finished in 647.54ms
+
+Ran 16 tests for test/W6D1/StakingPool.t.sol:StakingPoolTest
+[PASS] test_ClaimRewards() (gas: 308242)
+[PASS] test_ComplexStakingScenario() (gas: 467424)
+Logs:
+  === Starting Complex Staking Scenario Test ===
+  Phase 1: User1 stakes 1 ETH
+  User1 staked amount: 1 ETH
+  Total staked in pool: 1 ETH
+  Phase 2: Advancing 10 blocks to generate rewards
+  Current block number: 11
+  User1 earned rewards: 100 KK tokens
+  Phase 3: User2 stakes 2 ETH
+  User2 staked amount: 2 ETH
+  Total staked in pool: 3 ETH
+  Phase 4: Advancing 5 more blocks
+  Current block number: 16
+  User1 earned rewards: 116 KK tokens
+  User2 earned rewards: 33 KK tokens
+  Phase 5: User1 unstakes 0.5 ETH
+  User1 remaining stake: 0 ETH
+  Phase 6: Advancing 5 more blocks
+  Current block number: 21
+  Phase 7: Verifying final state
+  User1 balance verified: 0.5 ETH
+  User2 balance verified: 2 ETH
+  Total staked verified: 2.5 ETH
+  Phase 8: Verifying reward distribution
+  User1 rewards verified: 126 KK tokens
+  User2 rewards verified: 73 KK tokens
+  === Complex Staking Scenario Test Completed Successfully ===
+
+[PASS] test_Constructor() (gas: 25340)
+[PASS] test_KKTokenMint() (gas: 64998)
+[PASS] test_KKTokenTransfer() (gas: 96939)
+[PASS] test_MultipleUsersRewardDistribution() (gas: 332110)
+[PASS] test_RewardCalculation() (gas: 207223)
+[PASS] test_RewardPerTokenCalculation() (gas: 210999)
+[PASS] test_Stake() (gas: 214804)
+[PASS] test_StakeInfoStructure() (gas: 209671)
+[PASS] test_StakeUnstakeStake() (gas: 266120)
+[PASS] test_StakeZeroAmount() (gas: 11906)
+[PASS] test_TotalStakedOnlyOwner() (gas: 23145)
+[PASS] test_Unstake() (gas: 239711)
+[PASS] test_UnstakeInsufficientBalance() (gas: 47064)
+[PASS] test_UnstakeZeroAmount() (gas: 12434)
+Suite result: ok. 16 passed; 0 failed; 0 skipped; finished in 9.80ms (13.98ms CPU time)
+
+Ran 1 test suite in 311.15ms (9.80ms CPU time): 16 tests passed, 0 failed, 0 skipped (16 total tests)
