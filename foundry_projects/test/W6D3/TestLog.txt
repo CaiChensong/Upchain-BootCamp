@@ -1,0 +1,52 @@
+% forge test --match-contract RebaseTokenTest -vv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 16 tests for test/W6D3/RebaseToken.t.sol:RebaseTokenTest
+[PASS] test_InitialState() (gas: 45985)
+[PASS] test_Rebase_BalanceConsistency() (gas: 79544)
+[PASS] test_Rebase_ComplexScenario() (gas: 168663)
+Logs:
+  === Starting Complex Scenario Test ===
+  Initial total supply: 100000000000000000000000000
+  Initial owner balance: 100000000000000000000000000
+  After first transfer:
+    Owner balance: 99990000000000000000000000
+    User1 balance: 10000000000000000000000
+  After first rebase:
+    New total supply: 99000000000000000000000000
+    Owner balance: 98990100000000000000000000
+    User1 balance: 9900000000000000000000
+  After second transfer:
+    Owner balance: 98990100000000000000000000
+    User1 balance: 4900000000000000000000
+    User2 balance: 5000000000000000000000
+  After second rebase:
+    Final total supply: 98010000000000000000000000
+    Owner balance: 98000199000000000000000000
+    User1 balance: 4851000000000000000000
+    User2 balance: 4950000000000000000000
+  Validation results:
+    Total balances sum: 98010000000000000000000000
+    Total supply: 98010000000000000000000000
+    All balances are positive: PASS
+    Total balances equal total supply: PASS
+    User2 received transfer: PASS
+  === Complex Scenario Test Completed ===
+
+[PASS] test_Rebase_EdgeCase_OneDay() (gas: 37119)
+[PASS] test_Rebase_EdgeCase_OneYearPlusOneSecond() (gas: 35941)
+[PASS] test_Rebase_EventEmission() (gas: 36802)
+[PASS] test_Rebase_ExactTiming() (gas: 44774)
+[PASS] test_Rebase_MultipleTimes() (gas: 44199)
+[PASS] test_Rebase_OnlyOwner() (gas: 14222)
+[PASS] test_Rebase_Success() (gas: 41055)
+[PASS] test_Rebase_SupplyCalculation() (gas: 63818)
+[PASS] test_Rebase_SupplyPrecision() (gas: 35982)
+[PASS] test_Rebase_TooEarly() (gas: 18238)
+[PASS] test_Rebase_TransferAfterRebase() (gas: 76203)
+[PASS] test_Transfer() (gas: 52214)
+[PASS] test_TransferFrom() (gas: 85432)
+Suite result: ok. 16 passed; 0 failed; 0 skipped; finished in 10.41ms (14.92ms CPU time)
+
+Ran 1 test suite in 328.32ms (10.41ms CPU time): 16 tests passed, 0 failed, 0 skipped (16 total tests)
