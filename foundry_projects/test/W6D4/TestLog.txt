@@ -1,0 +1,97 @@
+% forge test --match-contract SimpleLeverageDEXTest -vv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 10 tests for test/W6D4/SimpleLeverageDEX.t.sol:SimpleLeverageDEXTest
+[PASS] testCalculatePnL() (gas: 149590)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Calculate PnL ===
+  Calculated PnL: -89973008097570000
+  PnL calculation test passed
+
+[PASS] testCannotCloseEmptyPosition() (gas: 22496)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Cannot Close Empty Position ===
+  Empty position close correctly rejected
+
+[PASS] testCannotLiquidateSelf() (gas: 146611)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Cannot Liquidate Self ===
+  Self-liquidation correctly rejected
+
+[PASS] testCannotOpenMultiplePositions() (gas: 167992)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Cannot Open Multiple Positions ===
+  First position opened successfully
+  Second position correctly rejected
+
+[PASS] testClosePosition() (gas: 144196)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Close Position ===
+  USDC returned: 99
+  Position closed successfully
+
+[PASS] testConstructor() (gas: 24105)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Constructor ===
+  Constructor test passed
+
+[PASS] testLiquidatePosition() (gas: 139344)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Liquidate Position ===
+  Position after liquidation attempt: 0
+  Liquidation test completed
+
+[PASS] testOpenLongPosition() (gas: 159041)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Open Long Position ===
+  Position opened successfully
+  Margin: 100 USDC
+  Borrowed: 200 USDC
+  Position size: 299910026991902430
+  Long position opened successfully
+
+[PASS] testOpenShortPosition() (gas: 155426)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Open Short Position ===
+  Position opened successfully
+  Margin: 100 USDC
+  Borrowed: 200 USDC
+  Position size: -300090027008102430
+  Short position opened successfully
+
+[PASS] testVirtualAssetPoolConsistency() (gas: 157360)
+Logs:
+  === Setup Complete ===
+  Initial vK: 1000000000000000000000000000000000000000000000
+  === Testing Virtual Asset Pool Consistency ===
+  vK before: 1000000000000000000000000000000000000000000000
+  vK after: 1000000000000000000000000000000000000000000000
+  vK difference: 0
+  Position details:
+  Margin: 100 USDC
+  Borrowed: 200 USDC
+  Size: 299910026991902430
+  Virtual asset pool consistency test completed
+
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 1.75ms (1.72ms CPU time)
+
+Ran 1 test suite in 297.72ms (1.75ms CPU time): 10 tests passed, 0 failed, 0 skipped (10 total tests)
