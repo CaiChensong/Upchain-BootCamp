@@ -1,0 +1,188 @@
+% forge test --match-contract CallOptionTokenTest -vvv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 6 tests for test/W6D4/CallOptionToken.t.sol:CallOptionTokenTest
+[PASS] test_CompleteFlow() (gas: 374049)
+Logs:
+  === Test Setup Complete ===
+  Owner: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
+  User1: 0x0000000000000000000000000000000000000001
+  User2: 0x0000000000000000000000000000000000000002
+  Mock ETH Address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Mock USDC Address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Call Option Address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Strike Price: 2000000000000000000000
+  Expiry Timestamp: 1735689600
+  Option to Underlying Ratio: 1000000000000000000
+  
+  === Testing Complete Flow: Issue -> Exercise -> Settle ===
+  Step 1: Issuing Options
+  Options issued:
+  - Collateral deposited: 20000000000000000000
+  - Options minted: 20000000000000000000
+  - User1 option balance: 20000000000000000000
+  - Contract ETH balance: 20000000000000000000
+  Step 2: User1 Exercising Options
+  User1 exercised options:
+  - Options exercised: 8000000000000000000
+  - USDC paid: 16000000000000000000000
+  - ETH received: 8000000000000000000
+  - Remaining options: 12000000000000000000
+  Step 3: User2 Buying and Exercising Options
+  User2 exercised options:
+  - Options exercised: 5000000000000000000
+  - USDC paid: 10000000000000000000000
+  - ETH received: 5000000000000000000
+  Step 4: Settling After Expiry
+  Final settlement:
+  - Total options burned: 7000000000000000000
+  - Remaining ETH returned to owner: 999807000000000000000000
+  - Total USDC collected: 26000000000
+  - Contract ETH balance: 0
+  - Contract USDC balance: 0
+  Complete flow test passed successfully!
+  
+
+[PASS] test_Constructor() (gas: 58667)
+Logs:
+  === Test Setup Complete ===
+  Owner: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
+  User1: 0x0000000000000000000000000000000000000001
+  User2: 0x0000000000000000000000000000000000000002
+  Mock ETH Address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Mock USDC Address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Call Option Address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Strike Price: 2000000000000000000000
+  Expiry Timestamp: 1735689600
+  Option to Underlying Ratio: 1000000000000000000
+  
+  === Testing Constructor ===
+  Constructor parameters verified successfully
+  Underlying Asset: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Strike Asset: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Strike Price: 2000000000000000000000
+  Expiry Timestamp: 1735689600
+  Collateral Ratio: 15000
+  Option to Underlying Ratio: 1000000000000000000
+  
+
+[PASS] test_ExerciseOptions() (gas: 288687)
+Logs:
+  === Test Setup Complete ===
+  Owner: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
+  User1: 0x0000000000000000000000000000000000000001
+  User2: 0x0000000000000000000000000000000000000002
+  Mock ETH Address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Mock USDC Address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Call Option Address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Strike Price: 2000000000000000000000
+  Expiry Timestamp: 1735689600
+  Option to Underlying Ratio: 1000000000000000000
+  
+  === Testing Exercise Options ===
+  Initial state after issuing options:
+  Total Collateral: 10000000000000000000
+  Total Issued Options: 10000000000000000000
+  User1 Option Balance: 10000000000000000000
+  User1 USDC Balance: 1000000000000
+  Exercising options:
+  Exercise Amount: 5000000000000000000
+  Underlying Amount (ETH): 5000000000000000000
+  After exercising options:
+  Total Collateral: 5000000000000000000
+  Total Issued Options: 5000000000000000000
+  User1 Option Balance: 5000000000000000000
+  User1 ETH Balance: 95000000000000000000
+  User1 USDC Balance: 990000000000
+  Contract ETH Balance: 5000000000000000000
+  Contract USDC Balance: 10000000000
+  Options exercised successfully
+  
+
+[PASS] test_IssueOptions() (gas: 195318)
+Logs:
+  === Test Setup Complete ===
+  Owner: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
+  User1: 0x0000000000000000000000000000000000000001
+  User2: 0x0000000000000000000000000000000000000002
+  Mock ETH Address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Mock USDC Address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Call Option Address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Strike Price: 2000000000000000000000
+  Expiry Timestamp: 1735689600
+  Option to Underlying Ratio: 1000000000000000000
+  
+  === Testing Issue Options ===
+  Initial state:
+  Total Collateral: 0
+  Total Issued Options: 0
+  User1 ETH Balance: 100000000000000000000
+  User1 Option Balance: 0
+  After issuing options:
+  Total Collateral: 10000000000000000000
+  Total Issued Options: 10000000000000000000
+  User1 ETH Balance: 90000000000000000000
+  User1 Option Balance: 10000000000000000000
+  Contract ETH Balance: 10000000000000000000
+  Options issued successfully
+  
+
+[PASS] test_RevertCases() (gas: 84945)
+Logs:
+  === Test Setup Complete ===
+  Owner: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
+  User1: 0x0000000000000000000000000000000000000001
+  User2: 0x0000000000000000000000000000000000000002
+  Mock ETH Address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Mock USDC Address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Call Option Address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Strike Price: 2000000000000000000000
+  Expiry Timestamp: 1735689600
+  Option to Underlying Ratio: 1000000000000000000
+  
+  === Testing Revert Cases ===
+  Revert case 1: Cannot issue options after expiry - PASSED
+  Revert case 2: Cannot exercise without sufficient options - PASSED
+  Revert case 3: Cannot settle before expiry - PASSED
+  
+
+[PASS] test_SettleAfterExpiry() (gas: 306308)
+Logs:
+  === Test Setup Complete ===
+  Owner: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
+  User1: 0x0000000000000000000000000000000000000001
+  User2: 0x0000000000000000000000000000000000000002
+  Mock ETH Address: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  Mock USDC Address: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Call Option Address: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Strike Price: 2000000000000000000000
+  Expiry Timestamp: 1735689600
+  Option to Underlying Ratio: 1000000000000000000
+  
+  === Testing Settle After Expiry ===
+  Initial state after issuing options:
+  Total Collateral: 10000000000000000000
+  Total Issued Options: 10000000000000000000
+  Contract ETH Balance: 10000000000000000000
+  After exercising some options:
+  Total Collateral: 7000000000000000000
+  Total Issued Options: 7000000000000000000
+  Contract ETH Balance: 7000000000000000000
+  Contract USDC Balance: 6000000000
+  Time warped to expiry timestamp: 1735689601
+  Is Expired: true
+  After settling:
+  Is Settled: true
+  Total Collateral: 7000000000000000000
+  Total Issued Options: 0
+  Contract ETH Balance: 0
+  Contract USDC Balance: 0
+  Owner ETH Balance: 999807000000000000000000
+  Owner USDC Balance: 6000000000
+  Settlement completed successfully
+  
+
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 14.46ms (24.21ms CPU time)
+
+Ran 1 test suite in 341.55ms (14.46ms CPU time): 6 tests passed, 0 failed, 0 skipped (6 total tests)
