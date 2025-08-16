@@ -1,0 +1,100 @@
+% forge test --match-contract DaoTest -vvv
+[⠊] Compiling...
+No files changed, compilation skipped
+
+Ran 1 test for test/W6D5/DaoTest.t.sol:DaoTest
+[PASS] testCompleteGovernanceFlow() (gas: 1164020)
+Logs:
+  === Setting up governance test environment ===
+  Owner address: 0x7FA9385bE102ac3EAc297483Dd6233D62b3e1496
+  User1 address: 0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF
+  User2 address: 0x537C8f3d3E18dF5517a58B3fB9D9143697996802
+  User3 address: 0xc0A55e2205B289a967823662B841Bd67Aa362Aec
+  User4 address: 0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0
+  Recipient address: 0x006217c47ffA5Eb3F3c92247ffFE22AD998242c5
+  VoteToken deployed at: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+  DaoBank deployed at: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+  Timelock deployed at: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+  Gov deployed at: 0x5991A2dF15A8F6A256D3Ec51E99254Cd3fb576A9
+  Permissions configured: DaoBank -> Timelock -> Gov
+  Voting tokens distributed to test users
+  Deposited 10 ETH to DaoBank
+  Initial VoteToken balances:
+  User1: 250000000000000000000000
+  User2: 200000000000000000000000
+  User3: 150000000000000000000000
+  User4: 50000000000000000000000
+  DaoBank balance: 10000000000000000000
+  Gov balance: 0
+  Recipient balance: 0
+  
+=== Starting complete governance flow test ===
+  
+--- Step 1: User delegation ---
+  User1 delegated voting power to self
+  User2 delegated voting power to self
+  User3 delegated voting power to self
+  User4 delegated voting power to self
+  Delegation status:
+  User1 delegate: 0x29E3b139f4393aDda86303fcdAa35F60Bb7092bF
+  User2 delegate: 0x537C8f3d3E18dF5517a58B3fB9D9143697996802
+  User3 delegate: 0xc0A55e2205B289a967823662B841Bd67Aa362Aec
+  User4 delegate: 0x90561e5Cd8025FA6F52d849e8867C14A77C94BA0
+  
+--- Advancing block for delegation to take effect ---
+  Advanced to block: 2
+  
+--- Step 2: Proposal creation ---
+  Proposal created with ID: 1
+  Initial proposal state: 0
+  
+--- Step 3: Waiting for voting to start ---
+  Proposal state after voting delay: 1
+  
+--- Step 4: User voting ---
+  User1 voted FOR proposal
+  User2 voted FOR proposal
+  User3 voted FOR proposal
+  User4 voted AGAINST proposal
+  Vote results:
+  FOR votes: 600000000000000000000000
+  AGAINST votes: 50000000000000000000000
+  Required quorum: 400000000000000000000000
+  Vote breakdown:
+    User1 (FOR): 250,000 tokens
+    User2 (FOR): 200,000 tokens
+    User3 (FOR): 150,000 tokens
+    User4 (AGAINST): 50,000 tokens
+  
+--- Step 5: Waiting for voting to end ---
+  Proposal state after voting period: 4
+  Proposal succeeded! Moving to next step...
+  
+--- Step 6: Queuing proposal ---
+  Proposal state after queuing: 5
+  Proposal actions:
+  Target: 0x006217c47ffA5Eb3F3c92247ffFE22AD998242c5
+  Amount: 1000000000000000000
+  
+--- Step 7: Waiting for timelock delay ---
+  Current time: 1
+  Execution time: 172801
+  Timelock delay: 172800
+  Time advanced to: 172802
+  
+--- Step 8: Executing proposal ---
+  Balances before execution:
+  Recipient balance: 0
+  DaoBank balance: 10000000000000000000
+  Proposal state after execution: 7
+  Balances after execution:
+  Recipient balance: 1000000000000000000
+  DaoBank balance: 9000000000000000000
+  Amount transferred: 1000000000000000000
+  
+=== Governance flow test completed successfully! ===
+  Proposal executed successfully, funds transferred from DaoBank to recipient user
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 20.40ms (3.40ms CPU time)
+
+Ran 1 test suite in 384.93ms (20.40ms CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)
