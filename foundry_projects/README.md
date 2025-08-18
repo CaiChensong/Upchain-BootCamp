@@ -17,8 +17,8 @@ $ forge build
 ### Deploy
 
 ```shell
-$ forge script script/Counter.s.sol:CounterScript \
-    --rpc-url $LOCAL_RPC_URL \
+$ forge script script/W7D1/NFTMarketForGraph.s.sol:DeployNFTMarketForGraphScript \
+    --rpc-url $SEPOLIA_RPC_URL \
     --private-key $PRIVATE_KEY \
     --broadcast \
     --verify
@@ -136,3 +136,13 @@ AutoBank 合约
 
 - 代码：foundry_projects/src/W5D3/AutoBank.sol
 - 地址：https://sepolia.etherscan.io/address/0x9adC5426B14cd65783E196133AcF60C33f15277c
+
+NFTMarketForGraph 合约
+
+- 代码：foundry_projects/src/W7D1/NFTMarketForGraph.sol
+- 地址：https://sepolia.etherscan.io/address/0x72bE779C26C45F84e1Bb20665FBC1F1535248636
+
+TestNFT 合约
+
+- 代码：foundry_projects/src/W7D1/TestNFT.sol
+- 地址：https://sepolia.etherscan.io/address/0x84daD945a537Db3B4042f812785d5B2f0fc37D7d
