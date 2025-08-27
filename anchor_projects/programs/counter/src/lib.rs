@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-declare_id!("F1rLREdWryjrPdcZeqcqctzbiFAUReeJYE8Nmq2ecY9T");
+declare_id!("6dP9DH2XyVHgKj8uuHXkZNu5oYzsz2dwMkm61uz7pot8");
 
 /*
 题目#1 编写第一个 Solana 程序（Program）
@@ -35,7 +35,13 @@ pub mod counter {
 
 #[derive(Accounts)]
 pub struct Initialize<'info> {
-    #[account(init, payer = signer, space = 8 + 8)]
+    #[account(
+        init,
+        payer = signer,
+        space = 8 + 8,
+        seeds = [b"counter", signer.key().as_ref()],
+        bump,
+    )]
     pub counter: Account<'info, Counter>,
     #[account(mut)]
     pub signer: Signer<'info>,
@@ -44,7 +50,11 @@ pub struct Initialize<'info> {
 
 #[derive(Accounts)]
 pub struct Increment<'info> {
-    #[account(mut)]
+    #[account(
+        mut,
+        seeds = [b"counter", signer.key().as_ref()],
+        bump,
+    )]
     pub counter: Account<'info, Counter>,
     #[account(mut)]
     pub signer: Signer<'info>,

@@ -7,3 +7,9 @@ artifacts
 node_modules
 .cursor
 .DS_Store
+.anchor
+target
+**/*.rs.bk
+test-ledger
+.yarn
+.cursor

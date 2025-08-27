@@ -1,0 +1,44 @@
+% npx tsx app/\(W8D3\)/solana-counter.ts
+=== Solana Counter 程序演示 ===
+钱包地址: B7xi82jYYtExes3nxKa269BgLT9e2ZpVQGtBjjkbtq8e
+网络: http://127.0.0.1:8899
+程序ID: PublicKey [PublicKey(6dP9DH2XyVHgKj8uuHXkZNu5oYzsz2dwMkm61uz7pot8)] {
+  _bn: <BN: 539c611b5309a78f49b252e673724da09171e43e86fb23f1d72a99f339838265>
+}
+
+Solana网络连接正常，版本: { 'feature-set': 3640012085, 'solana-core': '2.3.8' }
+钱包余额: 0.0000 SOL
+余额不足，请求空投...
+正在请求空投...
+空投成功！交易签名: 495ctyN8c6vRDaRvJAoYRS8eeLYRTQD7GTebemzPdFPzcK5ycrojurJkJPLBUHrANJoXT4WdPAGY2V2dUTq4LJoF
+钱包余额: 10.0000 SOL
+Counter账户不存在，开始初始化...
+正在初始化Counter账户...
+Counter PDA地址: AvndDvoxeKWdkXksp1tU6miA16C2TmryW2z8GnVq3gAC
+Bump种子: 255
+Counter账户初始化成功！
+交易签名: 5rvvwbFUVeL3cqenjaiRF9gAj1wn5CDAkJZe6G9dabsa6YFoEHcM98JEC6iSuasammN18ZAYgBgcchbn2T3C3eW5
+交易详情:
+  - 区块高度: 3174
+  - 费用: 5000 lamports
+正在查询Counter值...
+当前Counter值: 0
+正在递增Counter值...
+Counter值递增成功！
+交易签名: 5xQ3d9Ffz4T16YmY1wnV9DiKqsBrvM9HqdTzo5XHeG4EJHp4sXCZUomGwxjyTj3AjdHxy62enHvEFGrrYWy26rM9
+交易详情:
+  - 区块高度: 3175
+  - 费用: 5000 lamports
+正在查询Counter值...
+当前Counter值: 1
+递增完成:  0  →  1
+正在递增Counter值...
+Counter值递增成功！
+交易签名: 2wDyeH3zYdrDUmY1jxKGCXN7UJHocSnRKVTYgJ39UmNM1HToUhXiwUAQs4biA2JJhrEeupP5u1ukR4kqqJFiDoEf
+交易详情:
+  - 区块高度: 3176
+  - 费用: 5000 lamports
+正在查询Counter值...
+当前Counter值: 2
+最终Counter值: 2
+=== 演示完成 ===
