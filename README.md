@@ -1,6 +1,6 @@
 # Upchain-BootCamp
 
-Upchain BootCamp S7 Daily Homework
+Upchain BootCamp Practice
 
 - Solidity: foundry_projects/src
 - Frontend: viem_projects/app
